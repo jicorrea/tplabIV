@@ -1,0 +1,78 @@
+.form-ingreso {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /*background-color: #A3CCCC;*/
+      border: 5px solid #000066;
+      /*border-bottom-color: #ff0000;*/
+      
+      border-bottom-left-radius: 2em; /*abajo izquierda radio*/
+       border-top-right-radius: 2em;  /*arriba derecha radio*/
+       
+        border-top-color: #CC0000;  /*arriba color*/
+        border-bottom-color:  #CC0000;
+        border-right-color: #CC0000;
+        
+         border-top-style: double; /*Estilo de lineas*/
+         border-bottom-style: outset;
+      
+      /*position:absolute;*/
+      /*top:30%;*/ /*ubicacion*/
+      /*left:30%;*/ /*ubicacion*/
+
+      background-color:  #A3CCCC; /*color de fondo*/
+      color: white;     /*color de letra*/
+      opacity: 0.8;   /*opacidad*/
+
+}
+
+
+.imagenNO 
+{
+  visibility: hidden;
+}
+
+.imagen 
+{
+  visibility: visible;
+}
+
+
+.form-ingreso{
+  max-width: 330px;
+  padding: 15px;
+ 
+}
+.form-ingreso .form-ingreso-heading,
+.form-ingreso .checkbox {
+  margin-bottom: 10px;
+}
+.form-ingreso .checkbox {
+  font-weight: normal;
+}
+.form-ingreso .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-ingreso .form-control:focus {
+  z-index: 2;
+}
+.form-ingreso input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-ingreso input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#ingresar
+{
+  background-color:   #1F1F4C;
+}
