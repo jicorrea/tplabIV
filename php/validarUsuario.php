@@ -25,9 +25,9 @@ if($buscado !=Null)
 		
 	}
 	$_SESSION['registrado']=$correo;
-	$retorno=1;
-
 	
+	$retorno= 1;
+
 }else
 {
 	$retorno= 0;

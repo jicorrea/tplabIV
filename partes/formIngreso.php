@@ -6,7 +6,9 @@
 <?php 
  
 session_start();
-if(!isset($_SESSION['registrado'])){  ?>
+if(!isset($_SESSION['registrado']))
+  { ?>
+   
     <div id="formLogin" class="container">
 
       <form  class="form-ingreso " onsubmit="validarLogin();return false;">
@@ -32,7 +34,7 @@ if(!isset($_SESSION['registrado'])){  ?>
     </div> <!-- /container -->
 
   <?php }else{ //echo"<h3>usted '".$_SESSION['registrado']."' esta logeado. </h3>";   ?>         
-    <button onclick="deslogear()" class="btn btn-lg btn-danger btn-block" type="button"><span class="glyphicon glyphicon-off">&nbsp;</span>Deslogearme</button>
+    <!--button onclick="deslogear()" class="btn btn-lg btn-danger btn-block" type="button"><span class="glyphicon glyphicon-off">&nbsp;</span>Deslogearme</button-->
  <script type="text/javascript">
  MostarBotones();</script>
   <?php  }  ?>

@@ -14,6 +14,9 @@ switch ($queHago) {
 	case 'MostarLogin':
 			include("partes/formIngreso.php");
 		break;
+	case 'MostarBotones':
+			include("partes/botonesUsuario.php");
+		break;	
 	case 'MostarVotar':
 			include("partes/formVotacion.php");
 		break;

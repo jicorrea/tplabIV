@@ -8,10 +8,10 @@ function MostarLogin()
 		data:{queHacer:"MostarLogin"}
 	});
 	funcionAjax.done(function(retorno){
-		
-		$("#contenedor").focus();
 
 		$("#principal").html(retorno);
+
+		$("#correo").focus();
 
 		//$("#informe").html("Correcto Form login!!!");	
 	});

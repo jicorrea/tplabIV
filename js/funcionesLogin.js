@@ -23,18 +23,16 @@ function validarLogin()
 		if(retorno == 0)
 		{
 			$("#contrasena").val("");
-			$("#informe").html("* Contraseña o usuario no validos");
-							
+			$("#informe").html("* Contraseña o usuario no validos");					
 		}
-
 		if(retorno == 1)
 		{
-			$("#foto").removeClass("imagenNO");
-			$("#foto").addClass("imagen");
-
-			MostarLogin();	
+			MostarLogin();
 		}
+
+		
 	});
+
 	funcionAjax.fail(function(retorno){
 	//	$("#botonesABM").html(":(");
 		//$("#informe").html(retorno.responseText);	
@@ -53,11 +51,14 @@ function deslogear()
 	});
 	funcionAjax.done(function(retorno){
 			//MostarBotones();
-			MostarLogin();
+			
 
 			$("#foto").removeClass("imagen");
 			$("#foto").addClass("imagenNO");
+			//oculto los botones de usuario
+			$("#botonesUsuario").hide();
 			
+			MostarLogin();
 			//$("#actual").html("");
 			
 		//	$("#BotonLogin").html("Login<br>-Sesión-");
@@ -72,9 +73,22 @@ function MostarBotones()
 		url:"nexo.php",
 		type:"post",
 		data:{queHacer:"MostarBotones"}
-	});
+							});
+
 	funcionAjax.done(function(retorno){
-		$("#botonesABM").html(retorno);
+		
+			$("#botonesUsuario").show();
+
+			$("#botonesUsuario").html(retorno);	
+
+			$("#foto").removeClass("imagenNO");
+			$("#foto").addClass("imagen");	
+
+	
+
+					
+	
+
 		//$("#informe").html("Correcto BOTONES!!!");	
 	});
 }
