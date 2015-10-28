@@ -23,7 +23,9 @@ function validarLogin()
 		if(retorno == 0)
 		{
 			$("#contrasena").val("");
-			$("#informe").html("* Contraseña o usuario no validos");					
+			$("#contrasena").focus();	
+			$("#informe").addClass("alert alert-danger");	
+			$("#informe").html("* Contraseña o usuario no validos");	
 		}
 		if(retorno == 1)
 		{

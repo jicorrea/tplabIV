@@ -12,7 +12,7 @@ if(isset($_SESSION['registrado']))
  ?>
 		
                     <li>
-                        <a href="#" onclick="deslogear()">Deslogearse</a>
+                        <a href="#" onclick="deslogear()" class="glyphicon glyphicon-remove-sign btn btn-lg">Salir</a>
                     </li>
 
 
@@ -21,6 +21,5 @@ if(isset($_SESSION['registrado']))
 	{
 		
 	}
-
 
 	 ?>
