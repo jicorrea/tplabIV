@@ -29,11 +29,13 @@
 
 .imagenNO 
 {
+   padding: 10px;
   visibility: hidden;
 }
 
 .imagen 
 {
+ padding: 10px;
   visibility: visible;
 }
 
