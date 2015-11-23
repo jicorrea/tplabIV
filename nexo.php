@@ -17,12 +17,18 @@ switch ($queHago) {
 	case 'MostarBotones':
 			include("partes/botonesUsuario.php");
 		break;	
+	case 'MostarImagen':
+			include("partes/formImagen.php");
+		break;			
 	case 'MostarVotar':
 			include("partes/formVotacion.php");
 		break;
 	case 'Mostartabla':
 			include("partes/formTabla.php");
 		break;
+	case 'MostarSlider':
+			include("partes/slider.php");
+		break;			
 	case 'ValidarLogin':
 			include("php/validarUsuario.php");
 		break;		

@@ -1,0 +1,135 @@
+    /* 
+            Slider CSS
+        Created on : 23-abr-2014, 18:28:01
+        Author     : Rolando Caldas <rolando.caldas@gmail.com>
+    */
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        text-align: center;
+    }
+
+    input[name="slider-select-element"] {
+        display: none;
+    }
+
+    #slider-arrows {
+        margin: -25% auto 0 auto;
+        width: 80%;
+    }
+
+    #slider-box {
+        height: 100%;
+        width: 300%;
+    }
+
+    #slider-container {
+        height: 20%;
+        margin: 0 auto;
+        overflow: hidden;
+        text-align: left;
+        width: 80%;
+    }
+
+    .element-blue,
+    .element-green,
+    .element-red {
+        min-height: 400px;
+        max-height: 100%;
+        width: 100%;
+    }
+
+    .element-blue {
+     background:  url("../img/1.jpg");
+      -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;
+      background-size: cover;
+    }
+
+    .element-green {
+     background:  url("../img/2.jpg");
+      -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;
+      background-size: cover;        
+    }
+
+    .element-red {
+     background:  url("../img/3.jpg"); 
+      -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;
+      background-size: cover;            
+    }
+
+    .slider-element {
+        float: left;
+        width: 33.333%;
+    }
+
+    #element1:checked ~ #slider-arrows label:nth-child(2),
+    #element2:checked ~ #slider-arrows label:nth-child(3),
+    #element3:checked ~ #slider-arrows label:nth-child(1) {
+        display: block;
+        float: right;
+    }
+
+    #element1:checked ~ #slider-arrows label:nth-child(3),
+    #element2:checked ~ #slider-arrows label:nth-child(1),
+    #element3:checked ~ #slider-arrows label:nth-child(2) {
+        display: block;
+        float: left;
+    }
+
+    #element1:checked ~ #slider-arrows label:nth-child(2):before,
+    #element2:checked ~ #slider-arrows label:nth-child(3):before,
+    #element3:checked ~ #slider-arrows label:nth-child(1):before {
+        color: black  ;
+        content: "\f138";
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: antialiased;
+    }
+
+    #element1:checked ~ #slider-arrows label:nth-child(3):before,
+    #element2:checked ~ #slider-arrows label:nth-child(1):before,
+    #element3:checked ~ #slider-arrows label:nth-child(2):before {
+        color: black  ;
+        content: "\f137";
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: antialiased;
+    }
+
+    #element1:checked ~ #slider-container #slider-box {
+        margin-left: 0;
+    }
+
+    #element2:checked ~ #slider-container #slider-box {
+        margin-left: -100%;
+    }
+
+    #element3:checked ~ #slider-container #slider-box {
+        margin-left: -200%;
+    }
+
+    #slider-arrows label {
+        color: transparent;
+        cursor: pointer;
+        display: none;
+        font-size: 6rem;
+        height: 15px;
+        width: 15px;
+    }
+
+    #slider-box {
+        -webkit-transition: all 0.75s ease;
+        -moz-transition: all 0.75s ease;
+        -ms-transition: all 0.75s ease;
+        -o-transition: all 0.75s ease;
+        transition: all 0.75s ease;
+    }

@@ -55,11 +55,12 @@ function deslogear()
 			//MostarBotones();
 			
 
-			$("#foto").removeClass("imagen");
-			$("#foto").addClass("imagenNO");
+			//$("#foto").removeClass("imagen");
+			//$("#foto").addClass("imagenNO");
 			//oculto los botones de usuario
 			$("#botonesUsuario").hide();
-			
+			$("#fotoUser").hide();
+			$("#icon").css("color",'');
 			MostarLogin();
 			//$("#actual").html("");
 			
@@ -80,11 +81,36 @@ function MostarBotones()
 	funcionAjax.done(function(retorno){
 		
 			$("#botonesUsuario").show();
-
+			 $("#icon").css("color",'#F00');
 			$("#botonesUsuario").html(retorno);	
 
-			$("#foto").removeClass("imagenNO");
-			$("#foto").addClass("imagen");	
+			//$("#foto").removeClass("imagenNO");
+			//$("#foto").addClass("imagen");	
+
+	
+
+					
+	
+
+		//$("#informe").html("Correcto BOTONES!!!");	
+	});
+}
+function MostarImagen()
+{		//alert(queMostrar);
+	var funcionAjax=$.ajax({
+		url:"nexo.php",
+		type:"post",
+		data:{queHacer:"MostarImagen"}
+							});
+
+	funcionAjax.done(function(retorno){
+		//alert(retorno);
+			$("#fotoUser").show();
+
+			$("#fotoUser").html(retorno);	
+
+			//$("#foto").removeClass("imagenNO");
+			//$("#foto").addClass("imagen");	
 
 	
 

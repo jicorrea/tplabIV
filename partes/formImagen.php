@@ -6,10 +6,11 @@ if(isset($_SESSION['registrado'])) {
 
  ?>
 
-<img class="img-responsive img-right"  src="http://placehold.it/140x140&text=Foto" alt="">
+<img class="image-bg-fluid-height"  src="img/p.jpg" alt="">
 
 
 
 	<?php 
 	} 
-	 ?>
+	 //src="http://placehold.it/140x140&text=Foto"
+	?>

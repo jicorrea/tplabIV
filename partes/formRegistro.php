@@ -1,7 +1,12 @@
+<!-- Versión compilada y comprimida del CSS de Bootstrap -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<!-- Versión compilada y comprimida del JavaScript de Bootstrap -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 
 
 <form role="form" class="form-inline" role="form">
+</form>
   <div class="form-group">
     <label class="sr-only" for="ejemplo_email_1" >Email</label>
     <input type="email" class="form-control" id="mail"
