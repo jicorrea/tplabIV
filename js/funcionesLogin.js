@@ -81,7 +81,7 @@ function MostarBotones()
 	funcionAjax.done(function(retorno){
 		
 			$("#botonesUsuario").show();
-			 $("#icon").css("color",'#F00');
+			 $("#icon").css("color",'#00FF15');
 			$("#botonesUsuario").html(retorno);	
 
 			//$("#foto").removeClass("imagenNO");

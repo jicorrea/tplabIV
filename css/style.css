@@ -17,7 +17,7 @@
     }
 
     #slider-arrows {
-        margin: -25% auto 0 auto;
+        margin: -36% auto 0 auto;
         width: 80%;
     }
 
@@ -37,8 +37,8 @@
     .element-blue,
     .element-green,
     .element-red {
-        min-height: 400px;
-        max-height: 100%;
+        min-height: 500px;
+        max-height: 80%;
         width: 100%;
     }
 
@@ -121,9 +121,9 @@
         color: transparent;
         cursor: pointer;
         display: none;
-        font-size: 6rem;
-        height: 15px;
-        width: 15px;
+        font-size: 5rem;
+        height: 45px;
+        width: 45px;
     }
 
     #slider-box {

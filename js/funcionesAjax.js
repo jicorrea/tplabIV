@@ -53,7 +53,9 @@ function MostarSlider()
 								});
 
 	funcionAjax.done(function(retorno){
+										$("#fotoUser").hide();
 										$("#principal").html(retorno);
+
 										});
 	funcionAjax.fail(function(retorno){
 										//muestro el error
