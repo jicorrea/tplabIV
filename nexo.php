@@ -11,6 +11,9 @@ switch ($queHago) {
 	case 'VerEnMapa':
 			include("partes/formMapa.php");
 		break;
+	case 'MostarRegistro':
+			include("partes/formRegistro.php");
+		break;		
 	case 'MostarLogin':
 			include("partes/formIngreso.php");
 		break;

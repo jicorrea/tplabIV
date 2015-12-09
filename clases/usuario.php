@@ -4,6 +4,8 @@ class usuario
 
   public $correo;
   public $contrasena;
+  public $apellido;
+  public $nombre;
   public $telefono;
   public $provincia;
   public $localidad;
@@ -21,9 +23,11 @@ class usuario
   public function InsertarUsuario()
      {
                 $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-                $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO usuarios (correo,contraseña,telefono,provincia,localidad,direccion,foto)values(:correo, :contraseña, :telefono, :provincia, :localidad, :provincia, :foto)");
+                $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO usuarios (correo,contraseña,apellido,nombre,telefono,provincia,localidad,direccion,foto)values(:correo, :contraseña, :apellido, :nombre, :telefono, :provincia, :localidad, :provincia, :foto)");
                 $consulta->bindValue(':correo',$this->correo, PDO::PARAM_STR);
                 $consulta->bindValue(':contrasena', $this->contrasena, PDO::PARAM_STR);
+                $consulta->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
+                $consulta->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
                 $consulta->bindValue(':telefono', $this->telefono, PDO::PARAM_INT);
                                 $consulta->bindValue(':provincia', $this->provincia, PDO::PARAM_STR);
                                 $consulta->bindValue(':localidad', $this->localidad, PDO::PARAM_STR);

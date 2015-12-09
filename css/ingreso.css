@@ -6,7 +6,7 @@
       /*border-bottom-color: #ff0000;*/
       
       border-bottom-left-radius: 2em; /*abajo izquierda radio*/
-       border-top-right-radius: 2em;  /*arriba derecha radio*/
+       border-top-right-radius: 1em;  /*arriba derecha radio*/
        
         border-top-color: #CC0000;  /*arriba color*/
         border-bottom-color:  #CC0000;
@@ -41,7 +41,7 @@
 
 
 .form-ingreso{
-  max-width:250px;
+  max-width:500px;
   padding:5px;
  
 }
@@ -54,7 +54,7 @@
 }
 .form-ingreso .form-control {
   position: relative;
-  height: auto;
+ /* height: auto;*/
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;

@@ -1,5 +1,5 @@
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="css/ingreso.css" rel="stylesheet">
 
  
@@ -11,7 +11,7 @@ if(!isset($_SESSION['registrado']))
    
 
 
-      <form  class="form-ingreso " onsubmit="validarLogin();return false;">
+      <form  class="form-ingreso" onsubmit="validarLogin();return false;">
         <h2 class="form-ingreso-heading">Ingrese sus datos</h2>
         <label for="correo" class="sr-only">Correo electrónico</label>
         <input type="email" id="correo" class="form-control" placeholder="Correo electrónico" required="" autofocus="" value="<?php  if(isset($_COOKIE["registro"])){echo $_COOKIE["registro"];}?>">
@@ -21,7 +21,7 @@ if(!isset($_SESSION['registrado']))
           <label>
             <input type="checkbox" id="recordarme" checked> Recordame
           </label>
-                  <br><a href="index.html">Registrarse</a>
+                  <br><a href="#" onclick="MostarRegistro()">Registrarse</a>
         </div>
 
         <button id="ingresar" class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button><br>
