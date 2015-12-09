@@ -9,8 +9,6 @@ session_start();
 if(!isset($_SESSION['registrado']))
   { ?>
    
-
-
       <form  class="form-ingreso" onsubmit="validarLogin();return false;">
         <h2 class="form-ingreso-heading">Ingrese sus datos</h2>
         <label for="correo" class="sr-only">Correo electrónico</label>

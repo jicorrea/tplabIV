@@ -120,3 +120,4 @@ function MostarImagen()
 		//$("#informe").html("Correcto BOTONES!!!");	
 	});
 }
+

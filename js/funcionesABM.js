@@ -1,40 +1,56 @@
 
-function GrabarVoto()
+function GrabarUsuario()
 {
-
-	var varidVoto = $("#idVoto").val();
-	var varDni = $("#dni").val();
+	var varEstado=$("#guardar").val();
+	var varCorreo = $("#email").val();
+	var varContrasena = $("#clave").val();
+	var varApellido = $("#apellido").val();
+	var varNombre = $("#nombre").val();
+	var varTelefono = $("#telefono").val();		
 	var varProvincia = $("#provincia").val();
 	var varLocalidad = $("#localidad").val();
-	var varDireccion = $("#direccion").val();		
-	var varCandidato = $("#candidato").val();
-	var varSexo = $('input[name="sexo"]:checked').val();
-	//alert(varLocalidad);
-	
+	var varDireccion = $("#direccion").val();
+		var varFoto = $("#foto").val();		
+
+
 	var funcionAjax = $.ajax({
 		url:"nexo.php",
 		type:"post",
-		data:{queHacer:"GrabarVoto",
-		idVoto:varidVoto,
-		dni:varDni,
+		data:{queHacer:"GrabarUsuario",
+		estado:varEstado,
+		correo:varCorreo,
+		contrasena:varContrasena,
+		apellido:varApellido,
+		nombre:varNombre,
+		telefono:varTelefono,
 		provincia:varProvincia,
 		localidad:varLocalidad,
 		direccion:varDireccion,
-		candidato:varCandidato,
-		sexo:varSexo}
+		foto:varFoto}
 	});
 
 	funcionAjax.done(function(retorno){
 										//$("#principal").html(retorno);
 										//deslogear();
 										//MostarVotar();
-										MostarTabla();
+											if(retorno == 1)
+											{
+												$("#email").focus();	
+												$("#informe").addClass("alert alert-danger");	
+												$("#informe").html("*Correo Registrado");	
+											}
+											if(retorno == 0)
+											{
+												MostarLogin();
+
+											}
 										});
 	funcionAjax.fail(function(retorno){
 										$("#principal").html(retorno);
 										//muestro el error
 										});
 } 
+
 
 function EliminarVoto(idParametro)
 {
