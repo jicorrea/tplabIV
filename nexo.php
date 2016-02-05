@@ -65,7 +65,7 @@ switch ($queHago) {
 				$var->provincia = $_POST['provincia'];
 				$var->localidad = $_POST['localidad'];								
 				$var->direccion = $_POST['direccion'];
-
+				//falta validar que no suba nada y se asigne por defecto la foto
 				$nombreArchivo = $_FILES['foto']['name'];
 
 				//Filtro anti-XSS

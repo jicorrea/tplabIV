@@ -1,12 +1,12 @@
 <?php 
  session_start();
 if(isset($_SESSION['registrado'])) {  
-
+$var = usuario::TraerUnUsuario($_SESSION['registrado']);//verifica que exista
 	//echo "<section class='widget'>";
 
  ?>
 
-<img class="image-bg-fluid-height"  src="img/p.jpg" alt="">
+<img class="image-bg-fluid-height"  src="<?php echo "imagenes/".$var->foto?>" alt="">
 
 
 
