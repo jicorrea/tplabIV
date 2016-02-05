@@ -1,6 +1,6 @@
 
 
-<form class="form-ingreso"  onsubmit="GrabarUsuario();return false;" enctype="multipart/form-data">
+<form id="formRegistro" class="form-ingreso"  onsubmit="GrabarUsuario();return false;" method="POST" cceptcharset="utf-8" enctype="multipart/form-data">
 
         <div class="form-group">
           <label class="sr-only" for="ejemplo_email_1" >Email</label>
@@ -53,10 +53,15 @@
         <div class="form-group">
           <label class="sr-only" for="foto">Foto de perfil</label>
           <input type="file" name="foto" id="foto">
+        <img  src="imagenes/<?php echo isset($unaPersona) ? $unaPersona->GetFoto() : "porDefecto.jpg" ; ?>" class="fotoform"/>
+      <p style="  color: black;">*La foto se actualiza al guardar.</p>
         </div>
 
         <div id="informe">  </div>
 
-        <button type="submit" class="btn btn-default" name="guardar" id="guardar" value="cargar">Enviar</button>
+ <input type="hidden"  id="estado" name="estado" value="cargar">
+
+        <button type="submit" class="btn btn-default" name="boton" id="boton">Enviar</button>
 
 </form>
+

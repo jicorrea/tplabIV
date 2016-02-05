@@ -1,7 +1,7 @@
 
 function GrabarUsuario()
 {
-	var varEstado=$("#guardar").val();
+	/*var varEstado=$("#guardar").val();
 	var varCorreo = $("#email").val();
 	var varContrasena = $("#clave").val();
 	var varApellido = $("#apellido").val();
@@ -10,13 +10,20 @@ function GrabarUsuario()
 	var varProvincia = $("#provincia").val();
 	var varLocalidad = $("#localidad").val();
 	var varDireccion = $("#direccion").val();
-		var varFoto = $("#foto").val();		
 
+var varFoto = $("#foto").val();		
 
-	var funcionAjax = $.ajax({
+*/
+var formData = new FormData(document.getElementById("formRegistro")); //capturo todo lo del form
+
+formData.append("queHacer","GrabarUsuario"); //agrego una variable y su valor
+
+var funcionAjax = $.ajax({
 		url:"nexo.php",
 		type:"post",
-		data:{queHacer:"GrabarUsuario",
+		
+		/*data:{
+		queHacer:"GrabarUsuario",
 		estado:varEstado,
 		correo:varCorreo,
 		contrasena:varContrasena,
@@ -26,27 +33,43 @@ function GrabarUsuario()
 		provincia:varProvincia,
 		localidad:varLocalidad,
 		direccion:varDireccion,
-		foto:varFoto}
+		foto:varFoto*/
+		dataType: "HTML",
+		data: formData,
+		cache: false,
+		contentType: false,
+		processData: false	
 	});
+
 
 	funcionAjax.done(function(retorno){
 										//$("#principal").html(retorno);
 										//deslogear();
 										//MostarVotar();
+										//alert(retorno);
+											if(retorno == 0)
+											{
+												MostarLogin();
+
+											}										
 											if(retorno == 1)
 											{
 												$("#email").focus();	
 												$("#informe").addClass("alert alert-danger");	
 												$("#informe").html("*Correo Registrado");	
 											}
-											if(retorno == 0)
+											if(retorno == 2)
 											{
-												MostarLogin();
-
+												$("#foto").focus();
+												$("#informe").addClass("alert alert-danger");	
+												$("#informe").html("*Tipode archivo incorrecto");	
 											}
+
+
 										});
 	funcionAjax.fail(function(retorno){
-										$("#principal").html(retorno);
+											//alert(retorno);
+										//$("#principal").html(retorno);
 										//muestro el error
 										});
 } 
