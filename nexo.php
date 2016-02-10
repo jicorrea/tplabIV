@@ -47,7 +47,7 @@ switch ($queHago) {
 	 			
 				$var->correo = $_POST['email'];
 
-				$var->contrasena = $_POST['clave'];
+				$var->contrasena = md5($_POST['clave']);
 				$var->apellido = $_POST['apellido'];
 				$var->nombre = $_POST['nombre'];
 				$var->telefono = $_POST['telefono'];								

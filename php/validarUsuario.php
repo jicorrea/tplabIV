@@ -6,7 +6,7 @@ require_once("clases/usuario.php");
 
 session_start();
 $correo=$_POST['correo'];
-$contrasena=$_POST['contrasena'];
+$contrasena=md5($_POST['contrasena']);
 $recordar=$_POST['recordarme'];
 
 $buscado = usuario::validarUsuario($correo,$contrasena);
