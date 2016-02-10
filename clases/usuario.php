@@ -23,12 +23,12 @@ class usuario
   public function GuardarUsuario()
    {
     $var=usuario::TraerUnUsuario($this->correo);
-    if($var->correo!="")
+    if(empty($var)) //empty si esta vacia la variable
       {
-        $this->ModificarUsuario();
+               $this->InsertarUsuario();
       }
       else {
-        $this->InsertarUsuario();
+         $this->ModificarUsuario();
       }
 
    }
