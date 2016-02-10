@@ -46,7 +46,7 @@ var funcionAjax = $.ajax({
 										//$("#principal").html(retorno);
 										//deslogear();
 										//MostarVotar();
-										//alert(retorno);
+										alert(retorno);
 											if(retorno == 0)
 											{
 												MostarLogin();
@@ -62,7 +62,7 @@ var funcionAjax = $.ajax({
 											{
 												$("#foto").focus();
 												$("#informe").addClass("alert alert-danger");	
-												$("#informe").html("*Tipode archivo incorrecto");	
+												$("#informe").html("*Tipo de archivo incorrecto");	
 											}
 
 

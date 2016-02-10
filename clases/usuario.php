@@ -20,7 +20,18 @@ class usuario
             return $consulta->fetchAll(PDO::FETCH_CLASS, "usuario"); 
 
    }
+  public function GuardarUsuario()
+   {
+    $var=usuario::TraerUnUsuario($this->correo);
+    if($var->correo!="")
+      {
+        $this->ModificarUsuario();
+      }
+      else {
+        $this->InsertarUsuario();
+      }
 
+   }
    public static function TraerUnUsuario($correo)
    {
             $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
