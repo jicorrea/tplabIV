@@ -6,7 +6,7 @@ $var = usuario::TraerUnUsuario($_SESSION['registrado']);//verifica que exista
 
  ?>
 
-<img class="image-bg-fluid-height"  src="<?php echo "imagenes/".$var->foto?>" alt="">
+<img class="image-bg-fluid-height"  src="<?php echo "imagenes/".$var->foto?>" title="<?php echo $var->nombre.' '.$var->apellido?>">
 
 <!--Barra de usuario-->
 <nav class="navbar navbar-default sidebar" role="navigation">

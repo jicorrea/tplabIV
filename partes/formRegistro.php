@@ -18,8 +18,8 @@ $var = usuario::TraerUnUsuario($_SESSION['registrado']);//verifica que exista
 
         <div class="form-group">
           <label class="sr-only"  for="ejemplo_password_1">Contraseña</label>
-          <input type="password" class="form-control" id="clave" name="clave" 
-                 placeholder="Contraseña" value="<?php echo isset($var) ?  $var->contrasena : "" ; ?>" required="">
+          <input type="<?php echo isset($var) ?  "hidden" : "password" ; ?>" class="form-control" id="clave" name="clave" 
+                 placeholder="Contraseña" value="" required="">
         </div>
 
         <div class="form-group">
@@ -38,6 +38,19 @@ $var = usuario::TraerUnUsuario($_SESSION['registrado']);//verifica que exista
           <label class="sr-only" for="telefono" >Telefono</label>
           <input type="text" class="form-control" id="telefono" name="telefono"
                  placeholder="Introduce tu telefono" value="<?php echo isset($var) ?  $var->telefono : "" ; ?>" required="">
+        </div>
+
+          <div class="form-group">
+            <label class="sr-only" for="obra_soc">obra_soc</label>
+             <select  class="form-control" name="obra_soc" id="obra_soc">
+                   <option value="">---Obra Social---</option>
+                  <option value="Particular" <?php echo isset($var) && $var->obra_soc =="Particular" ?   "selected='selected'" : "" ; ?> >Particular</option>
+                  <option value="Pami" <?php echo isset($var) && $var->obra_soc =="Pami" ?   "selected='selected'" : "" ; ?> >Pami</option>
+                  <option value="Galeno" <?php echo isset($var) && $var->obra_soc =="Galeno" ?   "selected='selected'" : "" ; ?> >Galeno</option>
+                  <option value="Medical" <?php echo isset($var) && $var->obra_soc =="Medical" ?   "selected='selected'" : "" ; ?> >Medical</option>
+            </select> 
+
+
         </div>
 
         <div class="form-group">

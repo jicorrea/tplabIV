@@ -8,7 +8,8 @@
 session_start();
 if(!isset($_SESSION['registrado']))
   { ?>
-   
+ <div style="position: relative;">
+  <div style="position: absolute; left: 0px; top: 20px;">   
       <form  class="form-ingreso" onsubmit="validarLogin();return false;">
         <h2 class="form-ingreso-heading">Ingrese sus datos</h2>
         <label for="correo" class="sr-only">Correo electrónico</label>
@@ -19,13 +20,14 @@ if(!isset($_SESSION['registrado']))
           <label>
             <input type="checkbox" id="recordarme" checked> Recordame
           </label>
-                  <br><a href="#" onclick="MostarRegistro()">Registrarse</a>
+                  <br><a href="#" onclick="MostarRegistro()">Registrarse</a> 
         </div>
 
         <button id="ingresar" class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button><br>
 <div id="informe">  </div>
       </form>
-
+</div>
+  </div> 
 
 
 <!-- /container -->

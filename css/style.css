@@ -12,6 +12,10 @@
         text-align: center;
     }
 
+    .fondo {
+    background-image: url("../img/fondo.jpg");
+    }
+
     input[name="slider-select-element"] {
         display: none;
     }

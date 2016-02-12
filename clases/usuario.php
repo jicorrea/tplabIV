@@ -7,6 +7,7 @@ class usuario
   public $apellido;
   public $nombre;
   public $telefono;
+  public $obra_soc;
   public $provincia;
   public $localidad;
   public $direccion;
@@ -45,12 +46,13 @@ class usuario
   public function InsertarUsuario()
      {
                 $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-                $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO usuarios (correo,contrasena,apellido,nombre,telefono,provincia,localidad,direccion,foto)values(:correo, :contrasena, :apellido, :nombre, :telefono, :provincia, :localidad, :direccion, :foto)");
+                $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO usuarios (correo,contrasena,apellido,nombre,telefono,obra_soc,provincia,localidad,direccion,foto)values(:correo, :contrasena, :apellido, :nombre, :telefono, :obra_soc, :provincia, :localidad, :direccion, :foto)");
                 $consulta->bindValue(':correo',$this->correo, PDO::PARAM_STR);
                 $consulta->bindValue(':contrasena', $this->contrasena, PDO::PARAM_STR);
                 $consulta->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
                 $consulta->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
                 $consulta->bindValue(':telefono', $this->telefono, PDO::PARAM_INT);
+                $consulta->bindValue(':obra_soc', $this->obra_soc, PDO::PARAM_STR);
                                 $consulta->bindValue(':provincia', $this->provincia, PDO::PARAM_STR);
                                 $consulta->bindValue(':localidad', $this->localidad, PDO::PARAM_STR);
                                 $consulta->bindValue(':direccion', $this->direccion, PDO::PARAM_STR);
@@ -84,13 +86,14 @@ class usuario
    public function ModificarUsuario()
    {
       $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-      $consulta =$objetoAccesoDato->RetornarConsulta("UPDATE usuarios set contrasena= :contrasena, telefono = :telefono, apellido= :apellido, nombre= :nombre,provincia= :provincia, localidad= :localidad, direccion= :direccion, foto= :foto WHERE correo= :correo");
+      $consulta =$objetoAccesoDato->RetornarConsulta("UPDATE usuarios set contrasena= :contrasena, telefono = :telefono, obra_soc = :obra_soc, apellido= :apellido, nombre= :nombre,provincia= :provincia, localidad= :localidad, direccion= :direccion, foto= :foto WHERE correo= :correo");
       $consulta->bindValue(':correo',$this->correo, PDO::PARAM_STR);
       $consulta->bindValue(':contrasena',$this->contrasena, PDO::PARAM_STR);
-                                $consulta->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
-                                $consulta->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
-      $consulta->bindValue(':telefono',$this->telefono, PDO::PARAM_INT);      
-      $consulta->bindValue(':provincia',$this->provincia, PDO::PARAM_STR);
+      $consulta->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
+      $consulta->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
+      $consulta->bindValue(':telefono',$this->telefono, PDO::PARAM_INT); 
+      $consulta->bindValue(':obra_soc', $this->obra_soc, PDO::PARAM_STR);     
+                                $consulta->bindValue(':provincia',$this->provincia, PDO::PARAM_STR);
                                 $consulta->bindValue(':localidad', $this->localidad, PDO::PARAM_STR);
                                 $consulta->bindValue(':direccion', $this->direccion, PDO::PARAM_STR);      
       $consulta->bindValue(':foto', $this->foto, PDO::PARAM_STR);

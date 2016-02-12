@@ -35,22 +35,29 @@ switch ($queHago) {
 
 	//$var = new usuario();
 	 $var=usuario::TraerUnUsuario($_POST['email']);
+	 $error = 0;
 
 	 if(($_POST['estado']=="guardar" && !empty($var)) || ($_POST['estado']=="modificar" && empty($var)))
 	 {
-	 	echo 1;
+	 	$error=1;
 	 }else{
 	 			if($_POST['estado']=="guardar")
 	 			{
 	 				$var = new usuario();
+	 				$var->foto = "porDefecto.jpg";
+	 				$var->contrasena = md5($_POST['clave']);
 	 			}
 	 			
 				$var->correo = $_POST['email'];
 
-				$var->contrasena = md5($_POST['clave']);
+				
 				$var->apellido = $_POST['apellido'];
 				$var->nombre = $_POST['nombre'];
-				$var->telefono = $_POST['telefono'];								
+				$var->telefono = $_POST['telefono'];
+				if($_POST['obra_soc'] !="")	
+				{
+					$var->obra_soc = $_POST['obra_soc'];	
+				}
 				$var->provincia = $_POST['provincia'];
 				$var->localidad = $_POST['localidad'];								
 				$var->direccion = $_POST['direccion'];
@@ -70,7 +77,7 @@ switch ($queHago) {
 			
 						if(!in_array($extension, $extensiones)) 
 						{
-							echo 2;
+							$error=2;
 							//die( 'Sólo se permiten archivos con las siguientes extensiones: '.implode(', ', $extensiones) );
 						} 
 						else{
@@ -87,7 +94,7 @@ switch ($queHago) {
 								//Comprobamos el tamaño del archivo, y mostramos un mensaje si es mayor al tamaño expresado en Bytes
 								if($tamañoArchivo > $tamañoMaximoBytes) 
 								{
-									echo 1;
+									$error=1;
 								} 
 								else{
 										$var->foto = $titulo.".".$extension;
@@ -95,22 +102,26 @@ switch ($queHago) {
 										move_uploaded_file($_FILES['foto']['tmp_name'], 'imagenes/' . $titulo.".".$extension);
 									}
 							}
+				
+
 				}
 				
-				else{
+				/*else{
 						if($_POST['estado']=="guardar")
 						{
 							$var->foto = "porDefecto.jpg";
-						}
+						}*/
 									
 					}
 
-				if($var->foto !="")
-				{
-					$var->GuardarUsuario();
-					echo  0; //todo ok
-				}					
-			}											
+					if($error==0)
+					{
+						$var->GuardarUsuario();	
+					}
+					
+
+				echo $error;					
+			//}											
 		break;
 
 			case 'TraerVoto':
