@@ -16,7 +16,7 @@ class usuario
    public static function TraerUsuarios()
    {
             $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-            $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM usuarios");
+            $consulta =$objetoAccesoDato->RetornarConsulta("CALL TraerUsuarios()");
             $consulta->execute();           
             return $consulta->fetchAll(PDO::FETCH_CLASS, "usuario"); 
 
@@ -36,7 +36,7 @@ class usuario
    public static function TraerUnUsuario($correo)
    {
             $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-            $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM usuarios WHERE correo= :correo");
+            $consulta =$objetoAccesoDato->RetornarConsulta("CALL TraerUnUsuario(:correo)");
             $consulta->bindValue(':correo',$correo, PDO::PARAM_STR);            
             $consulta->execute();           
              $usuarioBuscado= $consulta->fetchObject('usuario');
@@ -46,7 +46,7 @@ class usuario
   public function InsertarUsuario()
      {
                 $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-                $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO usuarios (correo,contrasena,apellido,nombre,telefono,obra_soc,provincia,localidad,direccion,foto)values(:correo, :contrasena, :apellido, :nombre, :telefono, :obra_soc, :provincia, :localidad, :direccion, :foto)");
+                $consulta =$objetoAccesoDato->RetornarConsulta("CALL InsertarUsuario(:correo, :contrasena, :apellido, :nombre, :telefono, :obra_soc, :provincia, :localidad, :direccion, :foto)");
                 $consulta->bindValue(':correo',$this->correo, PDO::PARAM_STR);
                 $consulta->bindValue(':contrasena', $this->contrasena, PDO::PARAM_STR);
                 $consulta->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
@@ -65,7 +65,7 @@ class usuario
      public static function validarUsuario($correo,$contrasena)
      {
             $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-            $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from usuarios where correo= :correo && contrasena =:contrasena");
+            $consulta =$objetoAccesoDato->RetornarConsulta("CALL validarUsuario(:correo, :contrasena)");
     $consulta->bindValue(':correo', $correo, PDO::PARAM_STR);
         $consulta->bindValue(':contrasena', $contrasena, PDO::PARAM_STR);
     $consulta->execute();
@@ -76,7 +76,7 @@ class usuario
      public static function eliminarUsuario($correo)
      {
             $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-            $consulta =$objetoAccesoDato->RetornarConsulta("DELETE from usuarios where correo= :correo");
+            $consulta =$objetoAccesoDato->RetornarConsulta("CALL eliminarUsuario(:correo)");
     $consulta->bindValue(':correo', $correo, PDO::PARAM_STR);
     $consulta->execute();
     //$provBuscado= $consulta->fetchObject('voto');
@@ -86,7 +86,7 @@ class usuario
    public function ModificarUsuario()
    {
       $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-      $consulta =$objetoAccesoDato->RetornarConsulta("UPDATE usuarios set contrasena= :contrasena, telefono = :telefono, obra_soc = :obra_soc, apellido= :apellido, nombre= :nombre,provincia= :provincia, localidad= :localidad, direccion= :direccion, foto= :foto WHERE correo= :correo");
+      $consulta =$objetoAccesoDato->RetornarConsulta("CALL ModificarUsuario(:correo,:contrasena,:telefono,:obra_soc,:apellido,:nombre,:provincia,:localidad,:direccion,:foto)");
       $consulta->bindValue(':correo',$this->correo, PDO::PARAM_STR);
       $consulta->bindValue(':contrasena',$this->contrasena, PDO::PARAM_STR);
       $consulta->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);

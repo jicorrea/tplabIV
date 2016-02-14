@@ -58,6 +58,10 @@ switch ($queHago) {
 				{
 					$var->obra_soc = $_POST['obra_soc'];	
 				}
+				else
+				{
+					$var->obra_soc = "Particular";
+				}
 				$var->provincia = $_POST['provincia'];
 				$var->localidad = $_POST['localidad'];								
 				$var->direccion = $_POST['direccion'];
