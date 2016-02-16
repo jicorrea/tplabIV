@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-02-2016 a las 19:46:32
+-- Tiempo de generación: 17-02-2016 a las 00:42:51
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -19,6 +19,36 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarUsuario`(IN `correo` VARCHAR(50))
+    NO SQL
+DELETE from usuarios where correo=correo$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarUsuario`(IN `cor` VARCHAR(50), IN `cont` VARCHAR(50), IN `ape` VARCHAR(50), IN `nom` VARCHAR(50), IN `tel` INT(50), IN `obr` VARCHAR(50), IN `prov` VARCHAR(50), IN `loc` VARCHAR(50), IN `dir` VARCHAR(50), IN `fot` VARCHAR(50))
+    NO SQL
+INSERT INTO usuarios (correo,contrasena,apellido,nombre,telefono,obra_soc,provincia,localidad,direccion,foto)values(cor,cont,ape,nom,tel,obr,prov,loc,dir,fot)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ModificarUsuario`(IN `cor` VARCHAR(50), IN `cont` VARCHAR(50), IN `ape` VARCHAR(50), IN `nom` VARCHAR(50), IN `tel` INT(50), IN `obr` VARCHAR(50), IN `prov` VARCHAR(50), IN `loc` VARCHAR(50), IN `dir` VARCHAR(50), IN `fot` VARCHAR(50))
+    NO SQL
+UPDATE usuarios set contrasena= cont, telefono = tel, obra_soc = obr, apellido= ape, nombre= nom,provincia= prov, localidad= loc, direccion= dir, foto= fot WHERE correo= cor$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerUnUsuario`(IN `co` VARCHAR(50))
+    NO SQL
+SELECT * FROM usuarios WHERE correo = co$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerUsuarios`()
+    NO SQL
+SELECT * FROM usuarios$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `validarUsuario`(IN `cor` VARCHAR(50), IN `cont` VARCHAR(50))
+    NO SQL
+SELECT * from usuarios where correo= cor && contrasena =cont$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -44,11 +74,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`correo`, `contrasena`, `apellido`, `nombre`, `telefono`, `obra_soc`, `provincia`, `localidad`, `direccion`, `foto`) VALUES
-('fa@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'a', 'a', 0, 'Pami', 'a', 'a', 'a', 'fagmailcom.jpg'),
-('fe@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'ab', 'a', 0, 'Particular', 'a', 'a', 'a', 'fegmailcom.jpg'),
-('ff@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'ba', 'b', 1, 'Particular', 'a', 'a', 'a', 'ffgmailcom.jpg'),
-('fg@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'a', 'a', 1, 'Particular', 'a', 'a', 'a', 'fggmailcom.jpg'),
-('fr@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'a', 'a', 1, 'Medical', 'a', 'a', 'a', 'frgmailcom.jpg');
+('o@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'ramriez', 'Roberto', 1, 'Galeno', 'ab', 'a', 'a', 'ogmailcom.jpg'),
+('r@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'ramriez', 'Roberto', 1, 'Galeno', 'ab', 'a', 'a', 'ogmailcom.jpg');
 
 --
 -- Índices para tablas volcadas

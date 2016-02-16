@@ -52,12 +52,12 @@ function MostarRegistro()
 }
 
 
-function MostarVotar()
+function MostarConsulta()
 {
 	var funcionAjax = $.ajax({
 								url:"nexo.php",
 								type:"post",
-								data:{queHacer:"MostarVotar"}
+								data:{queHacer:"MostarConsulta"}
 								});
 
 	funcionAjax.done(function(retorno){
@@ -105,3 +105,35 @@ function MostarTabla()
 										});
 }
 
+
+function sendMail()
+{
+var formData = new FormData(document.getElementById("frmContacto")); //capturo todo lo del form
+
+formData.append("queHacer","sendMail"); //agrego una variable y su valor
+
+var funcionAjax = $.ajax({
+		url:"nexo.php",
+		type:"post",
+		dataType: "HTML",
+		data: formData,
+		cache: false,
+		contentType: false,
+		processData: false	
+	});
+
+	funcionAjax.done(function(retorno){
+										alert(retorno);	
+										if(retorno!="Error")
+										{
+											MostarSlider();
+										}
+
+
+										});
+	funcionAjax.fail(function(retorno){
+											alert(retorno);
+										//$("#principal").html(retorno);
+										//muestro el error
+										});
+} 

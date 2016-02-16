@@ -86,7 +86,7 @@ class usuario
    public function ModificarUsuario()
    {
       $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-      $consulta =$objetoAccesoDato->RetornarConsulta("CALL ModificarUsuario(:correo,:contrasena,:telefono,:obra_soc,:apellido,:nombre,:provincia,:localidad,:direccion,:foto)");
+      $consulta =$objetoAccesoDato->RetornarConsulta("CALL ModificarUsuario(:correo,:contrasena,:apellido,:nombre,:telefono,:obra_soc,:provincia,:localidad,:direccion,:foto)");
       $consulta->bindValue(':correo',$this->correo, PDO::PARAM_STR);
       $consulta->bindValue(':contrasena',$this->contrasena, PDO::PARAM_STR);
       $consulta->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
