@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-02-2016 a las 00:42:51
+-- Tiempo de generación: 18-02-2016 a las 10:36:46
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -53,6 +53,28 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `noticias`
+--
+
+CREATE TABLE IF NOT EXISTS `noticias` (
+  `id_noticia` int(50) NOT NULL,
+  `autor` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `titulo` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `categoria` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `fecha` date NOT NULL,
+  `noticia` varchar(50) COLLATE latin1_spanish_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `noticias`
+--
+
+INSERT INTO `noticias` (`id_noticia`, `autor`, `titulo`, `categoria`, `fecha`, `noticia`) VALUES
+(1, 'autor', 'titulo', 'policial', '2016-02-08', 'paso algo');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -82,11 +104,26 @@ INSERT INTO `usuarios` (`correo`, `contrasena`, `apellido`, `nombre`, `telefono`
 --
 
 --
+-- Indices de la tabla `noticias`
+--
+ALTER TABLE `noticias`
+  ADD PRIMARY KEY (`id_noticia`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`correo`);
 
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `noticias`
+--
+ALTER TABLE `noticias`
+  MODIFY `id_noticia` int(50) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

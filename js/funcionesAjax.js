@@ -137,3 +137,4 @@ var funcionAjax = $.ajax({
 										//muestro el error
 										});
 } 
+

@@ -33,7 +33,7 @@ switch ($queHago) {
 		break;			
 	case 'ValidarLogin':
 			include("php/validarUsuario.php");
-		break;		
+		break;			
 	case 'GrabarUsuario':
 
 	//$var = new usuario();
