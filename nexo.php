@@ -1,6 +1,9 @@
 <?php 
 require_once("clases/AccesoDatos.php");
 require_once("clases/usuario.php");
+require_once("clases/medico.php");
+require_once("clases/noticia.php");
+
 
 $queHago=$_POST['queHacer'];
 
@@ -22,9 +25,6 @@ switch ($queHago) {
 	case 'MostarImagen':
 			include("partes/formImagen.php");
 		break;			
-	case 'Mostartabla':
-			include("partes/formTabla.php");
-		break;
 	case 'MostarConsulta':
 			include("partes/FormConsulta.php");
 		break;			
@@ -33,10 +33,81 @@ switch ($queHago) {
 		break;			
 	case 'ValidarLogin':
 			include("php/validarUsuario.php");
-		break;			
+		break;		
+	case 'MostarAcciones':
+			include("php/acciones.php");
+		break;	
+	case 'MostarGrillaMedicos':
+			include("partes/grillaMedico.php");
+		break;
+	case 'MostarFormMedico':
+			include("partes/formMedico.php");
+		break;		
+
+	case 'GrabarMedico':
+
+ $var=medico::TraerUnMedico($_POST['email']);
+	 $error = 0;
+
+	 if(($_POST['estado']=="guardar" && !empty($var)) || ($_POST['estado']=="modificar" && empty($var)))
+	 {
+	 	$error=1;
+	 }else{
+	 			if($_POST['estado']=="guardar")
+	 			{
+	 				$var = new medico();
+	 			}
+	 			
+				$var->correo = $_POST['email'];
+
+				$var->nomDoctor = $_POST['nombre'];
+
+				if($_POST['especialidad'] !="")	
+				{
+					$var->especialidad = $_POST['especialidad'];	
+				}
+				else
+				{
+					$var->especialidad = "Clinico";
+				}
+
+				$var->telefono = $_POST['telefono'];
+
+				if($_POST['dia'] !="")	
+				{
+					$var->dia = $_POST['dia'];	
+				}
+				else
+				{
+					$var->dia = "Lunes";
+				}
+
+				if($_POST['estado'] !="")	
+				{
+					$var->estado = $_POST['estado'];	
+				}
+				else
+				{
+					$var->estado = "Disponible";
+				}
+
+
+						
+			}
+
+					if($error==0)
+					{
+						$var->GuardarMedico();	
+					}
+					
+
+				echo $error;		
+
+		break;		
+
+
 	case 'GrabarUsuario':
 
-	//$var = new usuario();
 	 $var=usuario::TraerUnUsuario($_POST['email']);
 	 $error = 0;
 
@@ -53,7 +124,6 @@ switch ($queHago) {
 	 			
 				$var->correo = $_POST['email'];
 
-				
 				$var->apellido = $_POST['apellido'];
 				$var->nombre = $_POST['nombre'];
 				$var->telefono = $_POST['telefono'];
@@ -112,14 +182,8 @@ switch ($queHago) {
 				
 
 				}
-				
-				/*else{
-						if($_POST['estado']=="guardar")
-						{
-							$var->foto = "porDefecto.jpg";
-						}*/
-									
-					}
+						
+			}
 
 					if($error==0)
 					{
@@ -127,21 +191,18 @@ switch ($queHago) {
 					}
 					
 
-				echo $error;					
-			//}											
+				echo $error;															
 		break;
 
-			case 'TraerVoto':
-			$var = new voto();
-			$var1 = $var->validarDni($_POST['idVoto']);		
+			//case 'TraerVoto':
+			//$var = new voto();
+			//$var1 = $var->validarDni($_POST['idVoto']);		
 			
-			echo json_encode($var1) ;
-		break;		
-			case 'EliminarVoto':
-			voto::eliminarVoto($_POST['idVoto']);
-					
-		
-		break;	
+			//echo json_encode($var1) ;
+		//break;		
+		//	case 'EliminarVoto':
+		//	voto::eliminarVoto($_POST['idVoto']);
+		//break;	
 			case 'sendMail':
 
 		if(isset($_POST['email'])) {

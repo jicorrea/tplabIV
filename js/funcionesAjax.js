@@ -25,6 +25,79 @@ function MostarLogin()
 	});
 }
 
+function MostarAcciones()
+{
+		//alert(queMostrar);
+	var funcionAjax=$.ajax({
+		url:"nexo.php",
+		type:"post",
+		data:{queHacer:"MostarAcciones"}
+	});
+	funcionAjax.done(function(retorno){
+		//alert(retorno);
+		$("#principal").html(retorno);
+
+		//$("#informe").html("Correcto Form login!!!");	
+	});
+	funcionAjax.fail(function(retorno){
+	//	$("#botonesABM").html(":(");
+		//$("#informe").html(retorno.responseText);	
+	});
+	funcionAjax.always(function(retorno){
+		//alert("siempre "+retorno.statusText);
+
+	});
+}
+
+function MostarGrillaMedicos()
+{
+		//alert(queMostrar);
+	var funcionAjax=$.ajax({
+		url:"nexo.php",
+		type:"post",
+		data:{queHacer:"MostarGrillaMedicos"}
+	});
+	funcionAjax.done(function(retorno){
+		//alert(retorno);
+		$("#principal").html(retorno);
+
+		//$("#informe").html("Correcto Form login!!!");	
+	});
+	funcionAjax.fail(function(retorno){
+	//	$("#botonesABM").html(":(");
+		//$("#informe").html(retorno.responseText);	
+	});
+	funcionAjax.always(function(retorno){
+		//alert("siempre "+retorno.statusText);
+
+	});
+}
+
+function MostarFormMedico()
+{
+	var funcionAjax=$.ajax({
+		url:"nexo.php",
+		type:"post",
+		data:{queHacer:"MostarFormMedico"
+		}
+	});
+	funcionAjax.done(function(retorno){
+		//alert(retorno);
+		$("#principal").html(retorno);
+
+		//$("#informe").html("Correcto Form login!!!");	
+	});
+	funcionAjax.fail(function(retorno){
+	//	$("#botonesABM").html(":(");
+		//$("#informe").html(retorno.responseText);	
+	});
+	funcionAjax.always(function(retorno){
+		//alert("siempre "+retorno.statusText);
+
+	});
+}
+
+
 function MostarRegistro()
 {
 		//alert(queMostrar);
@@ -87,23 +160,6 @@ function MostarSlider()
 										});
 }
 
-function MostarTabla()
-{
-
-	var funcionAjax = $.ajax({
-								url:"nexo.php",
-								type:"post",
-								data:{queHacer:"Mostartabla"}
-								});
-
-	funcionAjax.done(function(retorno){
-										
-										$("#principal").html(retorno);
-										});
-	funcionAjax.fail(function(retorno){
-										//muestro el error
-										});
-}
 
 
 function sendMail()

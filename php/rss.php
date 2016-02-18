@@ -15,10 +15,10 @@ $resultado=noticia::TraerNoticias();
 // Y generamos nuestro documento
 echo '<rss version="2.0">';
 echo '<channel>
-      <title>Colegio Atid</title>
-      <link>http://www.atid.edu.mx/</link>
+      <title>Clinica de Especialidades</title>
+      <link>http:/correajuan.tuars.com/</link>
       <language>es-CL</language>
-      <description>Noti del Colegio Atid</description>
+      <description>Novedades</description>
       <generator>Randy Espiritu</generator>';
       
    foreach ($resultado as $p){    
@@ -30,14 +30,9 @@ echo '<channel>
          <description><![CDATA['.$p->noticia.']]></description>
       </item>';
       }
-   echo'   
+   echo'    
    </channel>
 </rss>';
 ?>
 
 
-<script language="JavaScript" src="http://feed2js.org//feed2js.php?src=http%3A%2F%2Fwww.diariomedico.com%2Fservices%2Frss%3Fseccion%3Dnormativa&chan=y&num=3&desc=1&utf=y"  charset="UTF-8" type="text/javascript"></script>
-
-<noscript>
-<a href="http://feed2js.org//feed2js.php?src=http%3A%2F%2Fwww.diariomedico.com%2Fservices%2Frss%3Fseccion%3Dnormativa&chan=y&num=3&desc=1&utf=y&html=y">View RSS feed</a>
-</noscript>

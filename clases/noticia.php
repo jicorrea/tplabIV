@@ -33,7 +33,7 @@ class noticia
    public static function TraerUnaNoticia($id)
    {
             $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-            $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from noticias where id_noticia := id");
+            $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from noticias where id_noticia =: id");
             $consulta->bindValue(':id',$id, PDO::PARAM_INT);            
             $consulta->execute();           
              $usuarioBuscado= $consulta->fetchObject('noticia');
@@ -43,7 +43,7 @@ class noticia
   public function InsertarNoticia()
      {
                 $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-                $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO noticias (:=id_noticia,:=autor,:=titulo,:=categoria,fecha:=fecha,noticia:=noticia)");
+                $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO noticias (:id_noticia,:autor,:titulo,:categoria,:fecha,:noticia)");
                 $consulta->bindValue(':id_noticia',$this->id_noticia, PDO::PARAM_INT);
                 $consulta->bindValue(':autor', $this->autor, PDO::PARAM_STR);
                 $consulta->bindValue(':titulo', $this->titulo, PDO::PARAM_STR);
@@ -60,7 +60,7 @@ class noticia
      public static function eliminarNoticia($id)
      {
             $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-            $consulta =$objetoAccesoDato->RetornarConsulta("DELETE FROM noticias where id_noticia := id");
+            $consulta =$objetoAccesoDato->RetornarConsulta("DELETE FROM noticias where id_noticia =: id");
     $consulta->bindValue(':id', $id, PDO::PARAM_INT);
     $consulta->execute();
     //$provBuscado= $consulta->fetchObject('voto');
