@@ -46,7 +46,7 @@ formData.append("queHacer","GrabarUsuario"); //agrego una variable y su valor
 
 function GrabarMedico()
 {
-alert("retorno");
+
 var formData = new FormData(document.getElementById("formRegistro")); //capturo todo lo del form
 formData.append("queHacer","GrabarMedico"); //agrego una variable y su valor
 

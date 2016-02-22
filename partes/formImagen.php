@@ -39,6 +39,16 @@ $var = usuario::TraerUnUsuario($_SESSION['registrado']);//verifica que exista
     </div>
   </div>
 </nav>
+
+ <div class="row">
+<div class="col-sm-4" style="float:right;">
+<ul class="nav nav-pills nav-stacked">
+
+</ul>
+</div>
+</div>
+
+
 	<?php 
 	} 
 	 //src="http://placehold.it/140x140&text=Foto"
