@@ -21,6 +21,9 @@ if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tu
    <li>  
       <input class="form-control" type="button" href="#" onclick="MostarGrillaMedicos()" value="Gestionar Medicos"/>
   </li>
+   <li>  
+      <input class="form-control" type="button" href="#" onclick="MostarGrillaSlider()" value="Gestionar Slider"/>
+  </li>  
 </ul>     
 </div>
 </div> 

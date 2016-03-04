@@ -3,6 +3,8 @@ require_once("clases/AccesoDatos.php");
 require_once("clases/usuario.php");
 require_once("clases/medico.php");
 require_once("clases/noticia.php");
+require_once("clases/imagen.php");
+
 
 
 $queHago=$_POST['queHacer'];
@@ -27,10 +29,7 @@ switch ($queHago) {
 		break;			
 	case 'MostarConsulta':
 			include("partes/FormConsulta.php");
-		break;			
-	case 'MostarSlider':
-			include("partes/slider.php");
-		break;			
+		break;						
 	case 'ValidarLogin':
 			include("php/validarUsuario.php");
 		break;		
@@ -40,10 +39,13 @@ switch ($queHago) {
 	case 'MostarGrillaMedicos':
 			include("partes/grillaMedico.php");
 		break;
+	case 'MostarGrillaSlider':
+			include("partes/grillaSlider.php");
+		break;		
 	case 'MostarFormMedico':
 			include("partes/formMedico.php");
-		break;		
-
+		break;
+					
 	case 'GrabarMedico':
 
  $var=medico::TraerUnMedico($_POST['email']);
@@ -158,11 +160,38 @@ switch ($queHago) {
 							//die( 'Sólo se permiten archivos con las siguientes extensiones: '.implode(', ', $extensiones) );
 						} 
 						else{
+								//redimenciono la imagen
+								        $ruta_imagen =$_FILES['foto']['tmp_name'];
+
+                                        $miniatura_ancho_maximo = 200;
+                                        $miniatura_alto_maximo = 200;
+                                        $info_imagen = getimagesize($ruta_imagen);
+                                        $imagen_ancho = $info_imagen[0];
+                                        $imagen_alto = $info_imagen[1];
+                                        $imagen_tipo = $info_imagen['mime'];
+
+                                        $lienzo = imagecreatetruecolor( $miniatura_ancho_maximo, $miniatura_alto_maximo );
+
+                                             switch ( $imagen_tipo ){
+                                                case "image/jpg":
+                                                case "image/jpeg":
+                                                    $imagen = imagecreatefromjpeg( $ruta_imagen );
+                                                    break;
+                                                case "image/png":
+                                                    $imagen = imagecreatefrompng( $ruta_imagen );
+                                                    break;
+                                                case "image/gif":
+                                                    $imagen = imagecreatefromgif( $ruta_imagen );
+                                                    break;
+                                            }
+
+                            imagecopyresampled($lienzo, $imagen, 0, 0, 0, 0, $miniatura_ancho_maximo, $miniatura_alto_maximo, $imagen_ancho, $imagen_alto);
+								
 								//Si la extensión es correcta, procedemos a comprobar el tamaño del archivo subido
 								//Y definimos el máximo que se puede subir
 								//Por defecto el máximo es de 2 MB, pero se puede aumentar desde el .htaccess o en la directiva 'upload_max_filesize' en el php.ini
 
-								$tamañoArchivo = $_FILES['foto']['size']; //Obtenemos el tamaño del archivo en Bytes
+								$tamañoArchivo = $lienzo; //Obtenemos el tamaño del archivo en Bytes
 								$tamañoArchivoKB = round(intval(strval( $tamañoArchivo / 1024 ))); //Pasamos el tamaño del archivo a KB
 
 								$tamañoMaximoKB = "2048"; //Tamaño máximo expresado en KB
@@ -176,7 +205,7 @@ switch ($queHago) {
 								else{
 										$var->foto = $titulo.".".$extension;
 										//Si el tamaño es correcto, subimos los datos
-										move_uploaded_file($_FILES['foto']['tmp_name'], 'imagenes/' . $titulo.".".$extension);
+										imagejpeg( $lienzo, 'imagenes/' . $titulo.".".$extension, 90 );
 									}
 							}
 				

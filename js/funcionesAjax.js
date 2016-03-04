@@ -98,6 +98,14 @@ function MostarFormMedico()
 }
 
 
+function MostarformCargarImg(id)
+{
+	var idx=id;
+
+			$("#principal").load("partes/formCargarImg.php",{id:idx});
+
+}
+
 function MostarRegistro()
 {
 		//alert(queMostrar);
@@ -141,26 +149,21 @@ function MostarConsulta()
 										});
 }
 
-
-function MostarSlider()
+function MostarGrillaSlider()
 {
 	var funcionAjax = $.ajax({
 								url:"nexo.php",
 								type:"post",
-								data:{queHacer:"MostarSlider"}
+								data:{queHacer:"MostarGrillaSlider"}
 								});
 
 	funcionAjax.done(function(retorno){
-										$("#fotoUser").hide();
 										$("#principal").html(retorno);
-
 										});
 	funcionAjax.fail(function(retorno){
 										//muestro el error
 										});
 }
-
-
 
 function sendMail()
 {

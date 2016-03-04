@@ -89,8 +89,12 @@ formData.append("queHacer","GrabarMedico"); //agrego una variable y su valor
 } 
 
 
-
-
+function BorrarImagen(valor)
+{
+	alert(valor);
+	document.getElementById('idBorrar').value = valor;
+	document.frmBorrar.submit();
+}
 
 
 function EditarVoto(idParametro)
@@ -134,5 +138,13 @@ function EditarVoto(idParametro)
 		$("#informe").html(retorno.responseText);	
 	});	
 
-	
 }
+
+function ModificarImagen(valor)
+{
+	//alert(valor);
+	document.getElementById('id').value = valor;//ESTABA MAL ESCRITO getE"L"ementById
+	document.frmModificar.submit();	
+
+}
+	

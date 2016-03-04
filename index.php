@@ -18,6 +18,7 @@
     <link href="bootstrap-css/css/full-width-pics.css" rel="stylesheet">
 
 <link href="css/ingreso.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 <link rel="shortcut icon" href="img/mifavicon.png"> 
 
 
@@ -25,14 +26,41 @@
 <script type="text/javascript" src="js/funcionesLogin.js"></script>
 <script type="text/javascript" src="js/funcionesABM.js"></script>
 <script type="text/javascript" src="js/funcionesMapa.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
 <script type="text/javascript" src="js/moduloGeolocalizacion.js"></script>
 <script type="text/javascript" src="js/geolocalizacionCommon.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
 
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link rel="stylesheet" href="css/default.css" type="text/css" media="screen" />
+
+        <style>
+            #galeria {
+                margin:0 auto 0 auto;
+                width:2px;
+                height:2px;
+                -webkit-box-shadow: 0px 1px 5px 0px #4a4a4a;
+                -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+                box-shadow: 0px 1px 5px 0px #4a4a4a;
+            }
+   
+        </style>
+    <script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+
+    <script type="text/javascript">
+    var a=jQuery.noConflict();
+    a(window).load(function() {
+        a('#slider').nivoSlider();
+    });
+    </script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -57,7 +85,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-               <a class="navbar-brand" href="#" onclick="MostarSlider()">Clinica Medica</a>
+               <a class="navbar-brand" href="#">Clinica Medica</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -100,9 +128,24 @@
             <div class="row" id="contenedor">
                 <div  id="principal">
 
-                    <?php
 
-?>
+        <div id="galeria">
+            <div id="slider" class="nivoSlider zoom">
+                <?php
+                    $directory="img2";
+                        $dirint = dir($directory);
+                      //  $i=0;
+                            while (($archivo = $dirint->read()) !== false)
+                            {
+                                if (preg_match('/'.'gif'.'/i', $archivo) || preg_match('/'.'jpg'.'/i', $archivo) || preg_match('/'.'png'.'/i', $archivo)){
+
+                                    echo '<img src="'.$directory."/".$archivo.'">'."\n";
+                                }
+                            }
+                            $dirint->close();
+                ?>
+            </div>
+        </div>
 
 <!--                    <h1 class="section-heading">Section Heading</h1>
                     <p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -136,8 +179,8 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="bootstrap-css/js/jquery.js"></script>
-
+ 
+   <script src="bootstrap-css/js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="bootstrap-css/js/bootstrap.min.js"></script>
 
