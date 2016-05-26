@@ -91,7 +91,7 @@ formData.append("queHacer","GrabarMedico"); //agrego una variable y su valor
 
 function BorrarImagen(valor)
 {
-	alert(valor);
+
 	document.getElementById('idBorrar').value = valor;
 	document.frmBorrar.submit();
 }

@@ -22,7 +22,7 @@ class imagen
   public function GuardarImagen()
    {
  
-    $var=usuario::TraerUnMedico($this->correo);
+    $var=imagen::TraerUnaImagen($this->id);
     if(empty($var)) //empty si esta vacia la variable
       {
                $this->InsertarImagen();
@@ -46,7 +46,7 @@ class imagen
   public function InsertarImagen()
      {
                 $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-                $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO imagenes (id,titulo,descr,imagen,dia)values(:id,:titulo,:descr,:imagen,:dia)");
+                $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO imagenes (id,titulo,descr,imagen,dia) values(:id,:titulo,:descr,:imagen,:dia)");
                 $consulta->bindValue(':id',$this->id, PDO::PARAM_INT);
                 $consulta->bindValue(':titulo', $this->titulo, PDO::PARAM_STR);
                 $consulta->bindValue(':descr', $this->descr, PDO::PARAM_STR);

@@ -48,7 +48,7 @@ $var = usuario::TraerUnUsuario($_SESSION['registrado']);//verifica que exista
 <label for="comments">Comentarios: *</label>
 </td>
 <td>
-<textarea class="form-control" style="resize:inherit;" name="comments" maxlength="500" cols="30" rows="5"  required=""></textarea>
+<textarea class="form-control" style="resize:inherit;" name="comments" id="comments" maxlength="500" cols="30" rows="5"  required=""></textarea>
 </td>
 </tr>
 <tr>

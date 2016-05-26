@@ -7,8 +7,8 @@ $var = usuario::TraerUnUsuario($_SESSION['registrado']);//verifica que exista
  ?>
 
 <div style="position: relative;">
-  <div style= "<?php echo isset($var) ? "position: absolute; left: 30px; top: 50px;" : "position: absolute; left: 100px; top: 5px;" ; ?>"> 
-<form id="formRegistro" class="form-ingreso"  onsubmit="GrabarUsuario();return false;" method="POST" cceptcharset="utf-8" enctype="multipart/form-data">
+  <div style= "<?php echo isset($var) ? "position: absolute; left: 0px; top: 50px;" : "position: absolute; left: 0px; top: 5px;" ; ?>"> 
+<form id="formRegistro" class="form-ingreso"  onsubmit="GrabarUsuario();return false;" method="POST"  accept-charset="utf-8" enctype="multipart/form-data">
 
         <div class="form-group">
           <label class="sr-only" for="ejemplo_email_1" >Email</label>
