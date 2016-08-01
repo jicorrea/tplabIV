@@ -2,41 +2,41 @@
 function GrabarUsuario()
 {
 
-var formData = new FormData(document.getElementById("formRegistro")); //capturo todo lo del form
-formData.append("queHacer","GrabarUsuario"); //agrego una variable y su valor
+	var formData = new FormData(document.getElementById("formRegistro")); //capturo todo lo del form
+	formData.append("queHacer","GrabarUsuario"); //agrego una variable y su valor
 
 	var funcionAjax = $.ajax({
-		url:"nexo.php",
-		type:"post",
-		dataType: "HTML",
-		data: formData,
-		cache: false,
-		contentType: false,
-		processData: false	
-	});
+								url:"nexo.php",
+								type:"post",
+								dataType: "HTML",
+								data: formData,
+								cache: false,
+								contentType: false,
+								processData: false	
+							});
+
 	funcionAjax.done(function(retorno){
 										//$("#principal").html(retorno);
 										//deslogear();
 										//MostarVotar();
-							
-											if(retorno == 0)
-											{
-												alert("Sin errores!");
-												MostarLogin();
-
-											}										
-											if(retorno == 1)
-											{
-												$("#email").focus();	
-												$("#informe").addClass("alert alert-danger");	
-												$("#informe").html("*Correo Registrado");	
-											}
-											if(retorno == 2)
-											{
-												$("#foto").focus();
-												$("#informe").addClass("alert alert-danger");	
-												$("#informe").html("*Tipo de archivo incorrecto");	
-											}
+										if(retorno == 0)
+										{
+											alert("Sin errores!");
+											MostarLogin();
+										}										
+										if(retorno == 1)
+										{
+											$("#email").focus();	
+											$("#informe").addClass("alert alert-danger");	
+											$("#informe").html("*Correo Registrado");	
+										}
+										if(retorno == 2)
+										{
+											$("#foto").focus();
+											$("#informe").addClass("alert alert-danger");	
+											$("#informe").html("*Tipo de archivo incorrecto");	
+										}
+										
 										});
 	funcionAjax.fail(function(retorno){
 										$("#principal").html(retorno);
@@ -63,7 +63,7 @@ formData.append("queHacer","GrabarMedico"); //agrego una variable y su valor
 										//$("#principal").html(retorno);
 										//deslogear();
 										//MostarVotar();
-
+alert(retorno);
 											if(retorno == 0)
 											{
 												alert("Sin errores!");

@@ -8,9 +8,9 @@
 session_start();
 if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tuars.com"){
 	
-	if(isset($_POST['correo']))
+	if(isset($_POST['idparamodificar']))
 	{
-			$var = medico::TraerUnMedico($_POST['correo']);
+			$var = medico::TraerUnMedico($_POST['idparamodificar']);
 	}
 
    ?>
@@ -50,11 +50,11 @@ if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tu
             <label class="sr-only" for="obra_soc">Dia</label>
              <select  class="form-control" name="dia" id="dia">
                    <option value="">---Dia---</option>
-                  <option value="Particular" <?php echo isset($var) && $var->dia =="Lunes" ?   "selected='selected'" : "" ; ?> >Lunes</option>
-                  <option value="Pami" <?php echo isset($var) && $var->dia =="Martes" ?   "selected='selected'" : "" ; ?> >Martes</option>
-                  <option value="Galeno" <?php echo isset($var) && $var->dia =="Miercoles" ?   "selected='selected'" : "" ; ?> >Miercoles</option>
-                  <option value="Particular" <?php echo isset($var) && $var->dia =="Jueves" ?   "selected='selected'" : "" ; ?> >Jueves</option>
-                  <option value="Pami" <?php echo isset($var) && $var->dia =="Viernes" ?   "selected='selected'" : "" ; ?> >Viernes</option>
+                  <option value="lunes" <?php echo isset($var) && $var->dia =="Lunes" ?   "selected='selected'" : "" ; ?> >Lunes</option>
+                  <option value="martes" <?php echo isset($var) && $var->dia =="Martes" ?   "selected='selected'" : "" ; ?> >Martes</option>
+                  <option value="miercoles" <?php echo isset($var) && $var->dia =="Miercoles" ?   "selected='selected'" : "" ; ?> >Miercoles</option>
+                  <option value="jueves" <?php echo isset($var) && $var->dia =="Jueves" ?   "selected='selected'" : "" ; ?> >Jueves</option>
+                  <option value="viernes" <?php echo isset($var) && $var->dia =="Viernes" ?   "selected='selected'" : "" ; ?> >Viernes</option>
                  
             </select> 
 

@@ -1,37 +1,48 @@
 
 
 <?php 
-require_once("clases/AccesoDatos.php");
-require_once("clases/usuario.php");
+	
+	require_once("clases/AccesoDatos.php");
+	
+	require_once("clases/usuario.php");
 
-session_start();
-$correo=$_POST['correo'];
-$contrasena=md5($_POST['contrasena']);
-$recordar=$_POST['recordarme'];
+	session_start();
 
-$buscado = usuario::validarUsuario($correo,$contrasena);
+	$correo=$_POST['correo'];
 
-$retorno;
+	$contrasena=md5($_POST['contrasena']);
 
-if($buscado !=Null)
-{			
-	if($recordar=="true")
-	{
-		setcookie("registro",$correo,  time()+36000 , '/');
+	$recordar=$_POST['recordarme'];
+
+	$buscado = usuario::validarUsuario($correo,$contrasena);
+
+	$retorno;
+
+	if($buscado !=Null)
+	{			
+	
+		if($recordar=="true")
+		{
+			
+			setcookie("registro",$correo,  time()+36000 , '/');
 		
+		}else
+		{
+			
+			setcookie("registro",$correo,  time()-36000 , '/');
+		
+		}
+
+		$_SESSION['registrado']=$correo;
+	
+		$retorno= 1;
+
 	}else
 	{
-		setcookie("registro",$correo,  time()-36000 , '/');
-		
-	}
-	$_SESSION['registrado']=$correo;
 	
-	$retorno= 1;
+		$retorno= 0;
+	
+	}
 
-}else
-{
-	$retorno= 0;
-}
-
-echo $retorno;
+	echo $retorno;
 ?>

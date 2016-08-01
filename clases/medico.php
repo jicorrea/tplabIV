@@ -22,7 +22,7 @@ class medico
   public function GuardarMedico()
    {
  
-    $var=usuario::TraerUnMedico($this->correo);
+    $var=medico::TraerUnMedico($this->correo);
     if(empty($var)) //empty si esta vacia la variable
       {
                $this->InsertarMedico();
