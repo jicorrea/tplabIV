@@ -59,6 +59,23 @@ class medico
                 return $objetoAccesoDato->RetornarUltimoIdInsertado();
      }
    
+  public function ModificarMedico()
+  {
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+    
+    $consulta =$objetoAccesoDato->RetornarConsulta("UPDATE medicos SET correo=:correo,especialidad=:especialidad,dia=:dia,estado=:estado WHERE nomDoctor=:nomDoctor");
+    
+                $consulta->bindValue(':correo',$this->correo, PDO::PARAM_STR);
+                $consulta->bindValue(':nomDoctor', $this->nomDoctor, PDO::PARAM_STR);
+                $consulta->bindValue(':especialidad', $this->especialidad, PDO::PARAM_STR);
+                $consulta->bindValue(':telefono', $this->telefono, PDO::PARAM_STR);
+                $consulta->bindValue(':dia', $this->dia, PDO::PARAM_STR);                
+                $consulta->bindValue(':estado', $this->estado, PDO::PARAM_STR);
+    
+    return $consulta->execute();
+  }
+
+
    
      public static function eliminarMedico($id)
      {
