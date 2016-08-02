@@ -1,6 +1,7 @@
 <?php
  session_start();
 if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tuars.com"){
+	
 	if (isset($_POST['idBorrar'])) { 
 			echo "<script>alert('algo')</script>";
 			imagen::eliminarImagen($_POST['idBorrar']);
@@ -9,13 +10,20 @@ if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tu
 
 ?>
 
+    <script type="text/javascript">
+    	function BorrarImagen(id)
+		{
+			alert(id);
+			document.getElementById('idBorrar').value = id;
+			document.frmBorrar.submit();
+		}
+    </script>
+
+
 	<form name="frmBorrar" method="POST" action="javascript:MostarGrillaSlider()">
 		<input type="hidden" name="idBorrar" id="idBorrar" />
 	</form>
 
-	<form name="frmModificar" method="POST" action ="javascript:MostarformCargarImg(id.value)">
-		<input type="hidden" name="id" id="id" />
-	</form>	
 
 <?php
 	require_once('clases/imagen.php');

@@ -79,7 +79,7 @@
 
           <label>
             
-            br><a href="#" onclick="MostarRegistro()">Registrarse</a> 
+            <br><a href="#" onclick="MostarRegistro()">Registrarse</a> 
           
           </label>
 

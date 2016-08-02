@@ -51,7 +51,7 @@ class imagen
                 $consulta->bindValue(':titulo', $this->titulo, PDO::PARAM_STR);
                 $consulta->bindValue(':descr', $this->descr, PDO::PARAM_STR);
                 $consulta->bindValue(':imagen', $this->imagen, PDO::PARAM_STR);
-                $consulta->bindValue(':dia', $this->dia, PDO::PARAM_STR);                
+                $consulta->bindValue(':dia', strtotime (date ("Ymd H:i:s")), PDO::PARAM_STR);                
 
      
 
@@ -78,7 +78,7 @@ class imagen
                 $consulta->bindValue(':titulo', $this->titulo, PDO::PARAM_STR);
                 $consulta->bindValue(':descr', $this->descr, PDO::PARAM_STR);
                 $consulta->bindValue(':imagen', $this->imagen, PDO::PARAM_STR);
-                $consulta->bindValue(':dia', $this->dia, PDO::PARAM_STR); 
+                $consulta->bindValue(':dia', strtotime (date ("Ymd H:i:s")), PDO::PARAM_STR); 
       return $consulta->execute();
    }
 

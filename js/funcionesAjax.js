@@ -109,37 +109,11 @@ function MostarGrillaMedicos()
 }//FIN MostarGrillaMedicos()
 
 
-function MostarFormMedico()
+function MostarFormMedico(id)//sacar despues en nexo
 {
-	var funcionAjax=$.ajax({
-							
-							url:"nexo.php",
-							
-							type:"post",
-							
-							data:{
-									queHacer:"MostarFormMedico"
-								 }
-							});
+	var idx=id;
 
-	funcionAjax.done(function(retorno){
-										//alert(retorno);
-										$("#principal").html(retorno);
-										//$("#informe").html("Correcto Form login!!!");	
-	    							   }
-	    			);
-	
-	funcionAjax.fail(function(retorno){
-										//	$("#botonesABM").html(":(");
-										//$("#informe").html(retorno.responseText);	
-									  }
-				    );
-	
-	funcionAjax.always(function(retorno){
-											//alert("siempre "+retorno.statusText);
-
-										}
-					  );
+	$("#principal").load("partes/formMedico.php",{id:idx});
 }//FIN MostarFormMedico()
 
 
@@ -149,7 +123,7 @@ function MostarformCargarImg(id)
 
 	$("#principal").load("partes/formCargarImg.php",{id:idx});
 
-}//FIN MostarformMedico()
+}//FIN MostarformCargarImg()
 
 
 function MostarRegistro()
