@@ -1,17 +1,18 @@
 
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+
 <link href="css/ingreso.css" rel="stylesheet">
 
  
 <?php 
- 
+  require_once('../clases/medico.php');
 session_start();
 
 if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tuars.com"){
 	
-  $var= new medico();
-	
-  if(isset($_POST['id'])) 
+  //$var= new medico();
+
+
+  if($_POST['id']!="null") 
   {
 			$var = medico::TraerUnMedico($_POST['id']);
 	}
@@ -24,10 +25,12 @@ if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tu
 
   <form id="formRegistro" class="form-ingreso" action ="javascript:GrabarMedico()" method="POST"  accept-charset="utf-8" enctype="multipart/form-data">
 
+         <input type="hidden"  id="email" name="email" value="<?php echo isset($var) ?  $var->correo : "" ; ?>"/>
+
         <div class="form-group">
           <label class="sr-only" for="ejemplo_email_1" >Email</label>
           <input type="email" class="form-control" id="email" name="email"
-                 placeholder="Introduce tu email" value="<?php echo isset($var) ? $var->correo: ""; ?>" required="" autofocus=""/>
+                 placeholder="Introduce tu email" value="<?php echo isset($var) ? $var->correo: ""; ?>" required="" autofocus="" <?php echo isset($var) ? "disabled": ""; ?>/>
         </div>
 
         <div class="form-group">
@@ -40,9 +43,9 @@ if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tu
             <label class="sr-only" for="obra_soc">Especialidad</label>
              <select  class="form-control" name="especialidad" id="especialidad">
                    <option value="">---Especialidad---</option>
-                  <option value="Clinico" <?php echo isset($var) && $var->especialidad =="Clinico" ?   "selected='selected'" : "" ; ?> >Clinico</option>
-                  <option value="Pediatra" <?php echo isset($var) && $var->especialidad =="Pediatra" ?   "selected='selected'" : "" ; ?> >Pediatra</option>
-                  <option value="Neurologo" <?php echo isset($var) && $var->especialidad =="Neurologo" ?   "selected='selected'" : "" ; ?> >Neurologo</option>
+                  <option value="clinico" <?php echo isset($var) && $var->especialidad =="clinico" ?   "selected='selected'" : "" ; ?> >Clinico</option>
+                  <option value="pediatra" <?php echo isset($var) && $var->especialidad =="pediatra" ?   "selected='selected'" : "" ; ?> >Pediatra</option>
+                  <option value="neurologo" <?php echo isset($var) && $var->especialidad =="neurologo" ?   "selected='selected'" : "" ; ?> >Neurologo</option>
             </select> 
           </div> 
            
@@ -57,18 +60,18 @@ if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tu
             <label class="sr-only" for="obra_soc">Dia</label>
              <select  class="form-control" name="dia" id="dia">
                    <option value="">---Dia---</option>
-                  <option value="lunes" <?php echo isset($var) && $var->dia =="Lunes" ?   "selected='selected'" : "" ; ?> >Lunes</option>
-                  <option value="martes" <?php echo isset($var) && $var->dia =="Martes" ?   "selected='selected'" : "" ; ?> >Martes</option>
-                  <option value="miercoles" <?php echo isset($var) && $var->dia =="Miercoles" ?   "selected='selected'" : "" ; ?> >Miercoles</option>
-                  <option value="jueves" <?php echo isset($var) && $var->dia =="Jueves" ?   "selected='selected'" : "" ; ?> >Jueves</option>
-                  <option value="viernes" <?php echo isset($var) && $var->dia =="Viernes" ?   "selected='selected'" : "" ; ?> >Viernes</option>
+                  <option value="lunes" <?php echo isset($var) && $var->dia =="lunes" ?   "selected='selected'" : "" ; ?> >Lunes</option>
+                  <option value="martes" <?php echo isset($var) && $var->dia =="martes" ?   "selected='selected'" : "" ; ?> >Martes</option>
+                  <option value="miercoles" <?php echo isset($var) && $var->dia =="miercoles" ?   "selected='selected'" : "" ; ?> >Miercoles</option>
+                  <option value="jueves" <?php echo isset($var) && $var->dia =="jueves" ?   "selected='selected'" : "" ; ?> >Jueves</option>
+                  <option value="viernes" <?php echo isset($var) && $var->dia =="viernes" ?   "selected='selected'" : "" ; ?> >Viernes</option>
                  
             </select> 
           </div>
 
           <div class="form-group">
             <label class="sr-only" for="obra_soc">Estado</label>
-             <select  class="form-control" name="estado" id="estado">
+             <select  class="form-control" name="estado1" id="estado1">
                    <option value="">---Estado---</option>
                   <option value="Disponible" <?php echo isset($var) && $var->estado =="Disponible" ?   "selected='selected'" : "" ; ?> >Disponible</option>
                   <option value="Enfermo" <?php echo isset($var) && $var->estado =="Enfermo" ?   "selected='selected'" : "" ; ?> >Enfermo</option>
@@ -78,6 +81,7 @@ if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tu
           </div>  
 
  <input type="hidden"  id="estado" name="estado" value="<?php echo isset($var) ?  "modificar" : "guardar" ; ?>"/>
+
 
         <input type="submit" class="btn btn-default" name="boton" id="boton" value="enviar"/>
 

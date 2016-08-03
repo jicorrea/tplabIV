@@ -31,7 +31,7 @@ if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tu
 
 <!-- /container -->
 
-  <?php }else{ echo"<h3>usted '".$_SESSION['registrado']."' No tiene Acceso a esta seccion. </h3>";   ?>         
+  <?php }else{ echo"<h3>usted '".isset($_SESSION['registrado']) ? $_SESSION['registrado']:' '."' No tiene Acceso a esta seccion. </h3>";   ?>         
 
   <?php  }  ?>
     

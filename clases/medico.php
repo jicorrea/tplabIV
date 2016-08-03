@@ -1,4 +1,5 @@
 <?php
+  require_once('AccesoDatos.php');
 class medico
 {
 
@@ -63,7 +64,7 @@ class medico
   {
     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
     
-    $consulta =$objetoAccesoDato->RetornarConsulta("UPDATE medicos SET correo=:correo,especialidad=:especialidad,dia=:dia,estado=:estado WHERE nomDoctor=:nomDoctor");
+    $consulta =$objetoAccesoDato->RetornarConsulta("UPDATE medicos SET nomDoctor=:nomDoctor,especialidad=:especialidad,telefono=:telefono,dia=:dia,estado=:estado WHERE correo=:correo");
     
                 $consulta->bindValue(':correo',$this->correo, PDO::PARAM_STR);
                 $consulta->bindValue(':nomDoctor', $this->nomDoctor, PDO::PARAM_STR);

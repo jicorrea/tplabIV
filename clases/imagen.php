@@ -1,4 +1,7 @@
 <?php
+
+  require_once('AccesoDatos.php');
+
 class imagen
 {
 
@@ -64,7 +67,7 @@ class imagen
      {
             $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
             $consulta =$objetoAccesoDato->RetornarConsulta("DELETE FROM imagenes where id =:id");
-    $consulta->bindValue(':id', $id, PDO::PARAM_STR);
+    $consulta->bindValue(':id', $id, PDO::PARAM_INT);
     $consulta->execute();
     //$provBuscado= $consulta->fetchObject('voto');
    // return $provBuscado;

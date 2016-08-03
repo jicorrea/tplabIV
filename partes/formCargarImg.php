@@ -1,6 +1,6 @@
 <?php 
 require_once("../clases/imagen.php");
-require_once("../clases/AccesoDatos.php");
+
 
  session_start();
   if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tuars.com") {  

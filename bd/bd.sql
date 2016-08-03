@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2016 a las 19:34:58
+-- Tiempo de generación: 02-08-2016 a las 18:23:24
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -62,19 +62,17 @@ CREATE TABLE IF NOT EXISTS `imagenes` (
   `descr` text COLLATE latin1_spanish_ci NOT NULL,
   `imagen` text COLLATE latin1_spanish_ci NOT NULL,
   `dia` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `imagenes`
 --
 
 INSERT INTO `imagenes` (`id`, `titulo`, `descr`, `imagen`, `dia`) VALUES
-(1, 'HTML to PDF', 'How to Convert HTML to PDF in PHP with fpdf', '1.png', '2014-01-23 09:53:13'),
-(2, 'Bootstrap Contact Form', 'How to create Contact Form using Bootstrap', '2.png', '2014-01-23 09:53:13'),
-(3, 'Facebook Style Scroll Bar', 'How to create Facebook style scroll bar with jQuery and CSS.', '3.png', '2014-01-23 09:54:40'),
-(4, 'Instagram OAuth', 'How to login with Instagram OAuth using PHP', '4.png', '2014-01-23 09:54:40'),
-(5, 'PDO database connection in PHP', 'How to use PDO database connection in PHP', '5.png', '2014-01-23 09:56:49'),
-(6, 'Tweet on Twitter', 'How to post tweet on Twitter with PHP', '6.png', '2014-01-23 09:56:49');
+(1, 'ab', 'ab', '1.jpg', '0000-00-00 00:00:00'),
+(2, 'doctora', 'ahorro', '2.jpg', '0000-00-00 00:00:00'),
+(3, 'Facebook Style Scroll Bar', 'How to create Facebook style scroll bar with jQuery and CSS.', '3.jpg', '2014-01-23 09:54:40'),
+(4, 'acf', 'abc', '4.jpg', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -90,6 +88,14 @@ CREATE TABLE IF NOT EXISTS `medicos` (
   `dia` varchar(50) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `estado` varchar(50) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `medicos`
+--
+
+INSERT INTO `medicos` (`correo`, `nomDoctor`, `especialidad`, `telefono`, `dia`, `estado`) VALUES
+('a@hotmail.com', 'hugo', 'Clinico', '1234', 'lunes', 'guardar'),
+('ab@hotmail.com', 'hugo', 'Clinico', '1234', 'lunes', 'guardar');
 
 -- --------------------------------------------------------
 
@@ -153,13 +159,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`correo`, `contrasena`, `apellido`, `nombre`, `telefono`, `obra_soc`, `provincia`, `localidad`, `direccion`, `foto`) VALUES
-('adm@correajuan.tuars.com', 'c4ca4238a0b923820dcc509a6f75849b', 'adm', 'adm', 1, 'Particular', 'buenos aires', 'avellaneda', '1', 'admcorreajuantuarscom.jpg'),
-('fa@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'a', 'a', 0, 'Pami', 'a', 'a', 'a', 'fagmailcom.jpg'),
-('fe@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'ab', 'a', 0, 'Particular', 'a', 'a', 'a', 'fegmailcom.jpg'),
-('ff@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'ba', 'b', 1, 'Pami', 'a', 'a', 'a', 'ffgmailcom.jpg'),
-('fg@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'a', 'a', 1, 'Particular', 'a', 'a', 'a', 'fggmailcom.jpg'),
-('fr@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'a', 'a', 1, 'Medical', 'a', 'a', 'a', 'frgmailcom.jpg'),
-('pedro@tuars.com', 'c4ca4238a0b923820dcc509a6f75849b', 'juan', 'alberto', 1, 'Particular', 'buenos aires', 'avellaneda', '1', 'pedrotuarscom.jpg');
+('adm@correajuan.tuars.com', 'e10adc3949ba59abbe56e057f20f883e', 'adm', 'adm', 12345, 'Particular', 'bsas', 'a', 'a', 'porDefecto.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -203,7 +203,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `noticias`
 --

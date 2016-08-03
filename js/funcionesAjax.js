@@ -73,41 +73,21 @@ function MostarAcciones()
 
 
 
-function MostarGrillaMedicos()
+function MostarGrillaMedicos(id)
 {
-	//alert(queMostrar);
-	var funcionAjax=$.ajax({
-							
-							url:"nexo.php",
-							
-							type:"post",
-							
-							data:{
-								
-									queHacer:"MostarGrillaMedicos"
-								
-								}
-							});
 
-	funcionAjax.done(function(retorno){
-										//alert(retorno);
-										$("#principal").html(retorno);
-										//$("#informe").html("Correcto Form login!!!");	
-									   }
-					);
-	
-	funcionAjax.fail(function(retorno){
-										//$("#botonesABM").html(":(");
-										//$("#informe").html(retorno.responseText);	
-									  }
-					);
+	var idx=id;
 
-	funcionAjax.always(function(retorno){
-											//alert("siempre "+retorno.statusText);
-										}
-					  );
+	$("#principal").load("partes/grillaMedico.php",{idBorrar:idx});
 }//FIN MostarGrillaMedicos()
 
+function MostarGrillaSlider(id)
+{
+
+	var idx=id;
+
+	$("#principal").load("partes/grillaSlider.php",{idBorrar:idx});
+}// FIN MostarGrillaSlider()
 
 function MostarFormMedico(id)//sacar despues en nexo
 {
@@ -124,6 +104,9 @@ function MostarformCargarImg(id)
 	$("#principal").load("partes/formCargarImg.php",{id:idx});
 
 }//FIN MostarformCargarImg()
+
+
+
 
 
 function MostarRegistro()
@@ -191,30 +174,6 @@ function MostarConsulta()
 }//FIN MostarConsulta()
 
 
-function MostarGrillaSlider()
-{
-	var funcionAjax = $.ajax({
-								
-								url:"nexo.php",
-								
-								type:"post",
-								
-								data:{queHacer:"MostarGrillaSlider"}
-								
-							});
-
-	funcionAjax.done(function(retorno){
-
-										$("#principal").html(retorno);
-		
-									   }
-					);
-
-	funcionAjax.fail(function(retorno){
-										//muestro el error
-									  }
-					);
-}// FIN MostarGrillaSlider()
 
 
 function sendMail()

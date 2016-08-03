@@ -82,7 +82,7 @@ switch ($queHago) {
 										          $caracteres_malos = array("<", ">", "\"", "'", "/", "<", ">", "'", "/","@",".");
 										          $caracteres_buenos = array("& lt;", "& gt;", "& quot;", "& #x27;", "& #x2F;", "& #060;", "& #062;", "& #039;", "& #047;","","");
 										          
-										          $titulo = $_POST['id'];
+										          $titulo = $_POST['titulo'];
 										          //$titulo = str_replace($caracteres_malos, $caracteres_buenos, $titulo);
 										          //echo $nombreArchivo;
 
@@ -172,6 +172,7 @@ switch ($queHago) {
 	 												}
 	 			
 													$var->correo = $_POST['email'];
+													
 													$var->nomDoctor = $_POST['nombre'];
 
 													if($_POST['especialidad'] !="")	
@@ -190,9 +191,9 @@ switch ($queHago) {
 															$var->dia = "Lunes";
 														 }
 
-													if($_POST['estado'] !="")	
+													if($_POST['estado1'] !="")	
 													{
-														$var->estado = $_POST['estado'];	
+														$var->estado = $_POST['estado1'];	
 													}else{
 															$var->estado = "Disponible";
 														 }

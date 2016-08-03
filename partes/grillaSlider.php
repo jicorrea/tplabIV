@@ -1,32 +1,28 @@
 <?php
+ 	require_once('../clases/imagen.php');
  session_start();
+
 if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tuars.com"){
 	
 	if (isset($_POST['idBorrar'])) { 
-			echo "<script>alert('algo')</script>";
-			imagen::eliminarImagen($_POST['idBorrar']);
+			//echo "<script>alert(".$_POST['idBorrar'].")</script>";
+			$var=imagen::TraerUnaImagen($_POST['idBorrar']);
+			unlink('../img2/'.$var->imagen);//borro la imagen 
+			imagen::eliminarImagen($_POST['idBorrar']); //borro el registro
 		}
 		
-
 ?>
 
     <script type="text/javascript">
     	function BorrarImagen(id)
 		{
-			alert(id);
-			document.getElementById('idBorrar').value = id;
-			document.frmBorrar.submit();
+			MostarGrillaSlider(id);
 		}
     </script>
 
 
-	<form name="frmBorrar" method="POST" action="javascript:MostarGrillaSlider()">
-		<input type="hidden" name="idBorrar" id="idBorrar" />
-	</form>
-
-
 <?php
-	require_once('clases/imagen.php');
+
 	$ArrayDeImagenes = imagen::TraerImagenes();
 	echo "<div style='position: relative; color:#87CEFA;'>
   <div style='position: absolute; left: 0px; top: 50px;'> 
@@ -56,4 +52,6 @@ if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tu
 
 	echo "</table></div></div>";		
 
- }else{ echo"<h3>usted '".$_SESSION['registrado']."' No tiene Acceso a esta seccion. </h3>";}  ?>
+ }else{ echo"<div style='position: relative; color:#87CEFA;'>
+  <div style='position: absolute; left: 0px; top: 50px;'> 
+  <h3>usted '".isset($_SESSION['registrado'])?$_SESSION['registrado']:' '."' No tiene Acceso a esta seccion. </h3></div></div>";}  ?>
