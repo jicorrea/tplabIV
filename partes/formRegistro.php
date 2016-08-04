@@ -1,14 +1,22 @@
 <?php 
+require_once('../clases/usuario.php');
  session_start();
 if(isset($_SESSION['registrado'])) {  
-$var = usuario::TraerUnUsuario($_SESSION['registrado']);//verifica que exista
+//$var = usuario::TraerUnUsuario($_SESSION['registrado']);//verifica que exista
   //echo "<section class='widget'>";
+
+  if($_POST['id']!="null") 
+  {
+      $var = usuario::TraerUnUsuario($_POST['id']);
+  }
 }
  ?>
 
 <div style="position: relative;">
-  <div style= "<?php echo isset($var) ? "position: absolute; left: 0px; top: 50px;" : "position: absolute; left: 0px; top: 5px;" ; ?>"> 
-<form id="formRegistro" class="form-ingreso"  onsubmit="GrabarUsuario();return false;" method="POST"  accept-charset="utf-8" enctype="multipart/form-data">
+  <div style= "<?php echo isset($_SESSION['registrado']) ? "position: absolute; left: 30px; top: 50px;" : "position: absolute; left: 0px; top: 5px;" ; ?>"> 
+<form id="formRegistro" class="form-ingreso"  action ="javascript:GrabarUsuario()" method="POST"  accept-charset="utf-8" enctype="multipart/form-data">
+
+ <input type="hidden"  id="email" name="email" value="<?php echo isset($var) ?  $var->correo : "" ; ?>"/>
 
         <div class="form-group">
           <label class="sr-only" for="ejemplo_email_1" >Email</label>
@@ -19,7 +27,7 @@ $var = usuario::TraerUnUsuario($_SESSION['registrado']);//verifica que exista
         <div class="form-group">
           <label class="sr-only"  for="ejemplo_password_1">Contraseña</label>
           <input type="<?php echo isset($var) ?  "hidden" : "password" ; ?>" class="form-control" id="clave" name="clave" 
-                 placeholder="Contraseña" value="" required="">
+                 placeholder="Contraseña" value="" minlength="4" required="">
         </div>
 
         <div class="form-group">

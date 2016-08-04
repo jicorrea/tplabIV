@@ -16,7 +16,7 @@ if(isset($_SESSION['registrado']) && $_SESSION['registrado']=="adm@correajuan.tu
       <input class="form-control" type="button" href="#" value="Turnos Registrados"/>
   </li>  
    <li>
-      <input class="form-control" type="button" href="#" value="Gestionar Clientes"/>
+      <input class="form-control" type="button" href="#" onclick="MostarGrillaClientes()" value="Gestionar Clientes"/>
   </li> 
    <li>  
       <input class="form-control" type="button" href="#" onclick="MostarGrillaMedicos()" value="Gestionar Medicos"/>

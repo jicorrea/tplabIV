@@ -72,6 +72,12 @@ function MostarAcciones()
 }//FIN MostarAcciones()
 
 
+function MostarEspecialidades()
+{
+	
+	$("#principal").load("partes/grillaEspecialidades.php");
+}
+
 
 function MostarGrillaMedicos(id)
 {
@@ -79,6 +85,13 @@ function MostarGrillaMedicos(id)
 	var idx=id;
 
 	$("#principal").load("partes/grillaMedico.php",{idBorrar:idx});
+}//FIN MostarGrillaMedicos()
+
+function MostarGrillaClientes(id)
+{
+
+	var idx=id;
+	$("#principal").load("partes/grillaCliente.php",{idBorrar:idx});
 }//FIN MostarGrillaMedicos()
 
 function MostarGrillaSlider(id)
@@ -96,6 +109,20 @@ function MostarFormMedico(id)//sacar despues en nexo
 	$("#principal").load("partes/formMedico.php",{id:idx});
 }//FIN MostarFormMedico()
 
+function MostarFormRegistro(id)//sacar despues en nexo
+{
+	var idx=id;
+
+	$("#principal").load("partes/formRegistro.php",{id:idx});
+}//FIN MostarFormMedico()
+
+function MostarFormTurno(id,turno)//sacar despues en nexo
+{
+	alert(turno);
+	var idx=id;
+	var idx1=turno;
+	$("#principal").load("partes/formTurno.php",{id:idx,turno:idx1});
+}//FIN MostarFormMedico()
 
 function MostarformCargarImg(id)
 {

@@ -88,7 +88,7 @@
                     </li>
 
                     <li>
-                        <a href="#">Especialidades</a>
+                        <a href="#" onclick="MostarEspecialidades()">Especialidades</a>
                     </li>
 
                     <li>

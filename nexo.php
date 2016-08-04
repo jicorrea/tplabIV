@@ -5,7 +5,7 @@ require_once("clases/usuario.php");
 require_once("clases/medico.php");
 require_once("clases/noticia.php");
 require_once("clases/imagen.php");
-
+require_once("clases/turno.php");
 
 $queHago=$_POST['queHacer'];
 
@@ -14,10 +14,6 @@ switch ($queHago) {
 					case 'VerEnMapa':
 										include("partes/formMapa.php");
 										break;
-					
-					case 'MostarRegistro':
-											include("partes/formRegistro.php");
-											break;		
 	
 					case 'MostarLogin':
 											include("partes/formIngreso.php");
@@ -42,19 +38,7 @@ switch ($queHago) {
 					case 'MostarAcciones':
 											include("php/acciones.php");
 											break;	
-	
-					case 'MostarGrillaMedicos':
-												include("partes/grillaMedico.php");
-												break;
-	
-					case 'MostarGrillaSlider':
-												include("partes/grillaSlider.php");
-												break;		
-	
-					case 'MostarFormMedico':
-												include("partes/formMedico.php");
-												break;
-					
+		
 					case 'GrabarSlider':
 										$var=imagen::TraerUnaImagen($_POST['id']);
 
@@ -206,6 +190,44 @@ switch ($queHago) {
 											
 											echo $error;		
 											break;		
+
+					case 'GrabarTurno':
+											//$turno=turno::TraerUnTurno($_POST['id']);
+	 										$error = 0;
+
+	 										if(($_POST['estado']!="guardar") || ($_POST['estado']!="modificar"))
+	 										{
+	 											$error=1;
+	 										}else{
+	 												if($_POST['estado']=="guardar")
+	 												{
+	 													$var = new turno();
+	 												}
+	 												
+	 												$doc= medico::TraerUnMedico($_POST['nomDoctor']);
+
+													$var->uCorreo = $_POST['uCorreo'];
+													
+													$var->nomDoctor = $doc->nomDoctor;
+
+													$var->especialidad = $doc->especialidad;
+
+													$var->fecha = $_POST['fecha'];
+
+													$var->horario="ahora";
+													
+													$var->estado ="liberado";
+
+												}
+
+											if($error==0)
+											{
+												$var->GuardarTurno();	
+											}
+											
+											echo $error;		
+											break;		
+
 
 				    case 'GrabarUsuario':
 											 $var=usuario::TraerUnUsuario($_POST['email']);

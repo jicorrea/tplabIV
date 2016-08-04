@@ -1,5 +1,7 @@
 <?php
 
+require_once('AccesoDatos.php');
+
 class usuario
 {
 
@@ -121,13 +123,13 @@ class usuario
   }
   
 
-  public static function eliminarUsuario($correo)
+  public function eliminarUsuario()
   {
     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
     
-    $consulta =$objetoAccesoDato->RetornarConsulta("CALL eliminarUsuario(:correo)");
+    $consulta =$objetoAccesoDato->RetornarConsulta("DELETE FROM usuarios where correo=:correo");
     
-    $consulta->bindValue(':correo', $correo, PDO::PARAM_STR);
+    $consulta->bindValue(':correo', $this->correo, PDO::PARAM_STR);
     
     $consulta->execute();
     //$provBuscado= $consulta->fetchObject('voto');
